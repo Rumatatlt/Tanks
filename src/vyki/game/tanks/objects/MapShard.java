@@ -50,7 +50,7 @@ public class MapShard{
         int div=GlobalVariables.player1_Y/1000+2;
         //int mcY=GlobalVariables.player1_Y % GlobalVariables.mapSize;
         //Нижний правый
-        if (mcX>max && mcY>max) {
+      /*  if (mcX>max && mcY>max) {
             //System.out.println("1");
             if (!shardsCreated_1){
                 shards.add(new MapShard(1000, 0, background));
@@ -60,20 +60,22 @@ public class MapShard{
                 playerLastZone = 1; // Zone
             }
         }
+        */
         //Верхний правый
         if (mcX>max && mcY<max) {
             //System.out.println("2");
             if (!shardsCreated_2){
-                if (!(findShard(shards,0 * div, -1000 * div))) { shards.add(new MapShard(0 * div, -1000 * div, background)); System.out.println((!findShard(shards,0 * div, -1000 * div)));}
-                shards.add(new MapShard(1000, -1000, background));
-                shards.add(new MapShard(1000, 0, background));
+                if ((findShard(shards,0 * div, -1000 * div))) {} else{ shards.add(new MapShard(0 * div, -1000 * div, background));}
+                //shards.add(new MapShard(0 * div, -1000 * div, background));
+               // shards.add(new MapShard(1000, -1000, background));
+               // shards.add(new MapShard(1000, 0, background));
                 //System.out.println("player1_X= "+GlobalVariables.player1_X+" player1_Y= "+ GlobalVariables.player1_Y);
                 //shardsCreated_2 = true;
                 playerLastZone = 2; // Zone 2
             }
         }
         //Верхний левый
-        if (mcX<max && mcY<max) {
+       /* if (mcX<max && mcY<max) {
             //System.out.println("3");
             if (!shardsCreated_3){
                 shards.add(new MapShard(-1000, -1000, background));
@@ -97,7 +99,7 @@ public class MapShard{
         switch (playerLastZone){
             case 1:{
                 if (shardsCreated_2){
-                    shards.remove("1");
+                    shards.remove();
                     shards.remove("2");
                     shardsCreated_2=false;
                 }
@@ -172,12 +174,13 @@ public class MapShard{
                 break;
             }
         }
+        */
     }
 
     public static boolean findShard(ArrayList<MapShard> shards, int X, int Y){
         boolean val = false;
         for ( MapShard shard : shards){
-            if (shard.trueX == X && shard.trueY == Y){val = true;} else val = false;
+            if (shard.trueX == X && shard.trueY == Y){val = true; System.out.println("Найден");} else val = false;
         }
         return val;
     }

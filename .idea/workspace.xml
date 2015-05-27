@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="940a584d-0cdc-4348-98a3-047317967b49" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/vyki/game/tanks/Game.java" afterPath="$PROJECT_DIR$/src/vyki/game/tanks/Game.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/vyki/game/tanks/objects/MapShard.java" afterPath="$PROJECT_DIR$/src/vyki/game/tanks/objects/MapShard.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/built-jar.properties" afterPath="$PROJECT_DIR$/build/built-jar.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -48,8 +47,8 @@
       <file leaf-file-name="MapShard.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/vyki/game/tanks/objects/MapShard.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.76898736" vertical-offset="2489" max-vertical-offset="3162">
-              <caret line="179" column="62" selection-start-line="179" selection-start-column="62" selection-end-line="179" selection-end-column="62" />
+            <state vertical-scroll-proportion="0.6962025" vertical-offset="631" max-vertical-offset="3213">
+              <caret line="67" column="47" selection-start-line="67" selection-start-column="47" selection-end-line="67" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -432,7 +431,13 @@
       <option name="project" value="LOCAL" />
       <updated>1432732362021</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Rumata">
+      <created>1432737051911</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1432737051911</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -538,7 +543,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="3" />
+      <option name="time" value="5" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -963,8 +968,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/vyki/game/tanks/objects/MapShard.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.76898736" vertical-offset="2489" max-vertical-offset="3162">
-          <caret line="179" column="62" selection-start-line="179" selection-start-column="62" selection-end-line="179" selection-end-column="62" />
+        <state vertical-scroll-proportion="0.6962025" vertical-offset="631" max-vertical-offset="3213">
+          <caret line="67" column="47" selection-start-line="67" selection-start-column="47" selection-end-line="67" selection-end-column="47" />
           <folding />
         </state>
       </provider>
