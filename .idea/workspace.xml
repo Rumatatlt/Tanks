@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="940a584d-0cdc-4348-98a3-047317967b49" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/vyki/game/tanks/Game.java" afterPath="$PROJECT_DIR$/src/vyki/game/tanks/Game.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/vyki/game/tanks/objects/MapShard.java" afterPath="$PROJECT_DIR$/src/vyki/game/tanks/objects/MapShard.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/built-jar.properties" afterPath="$PROJECT_DIR$/build/built-jar.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Game2D.iws" />
@@ -33,21 +35,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Game.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Game.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/vyki/game/tanks/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.49275362" vertical-offset="765" max-vertical-offset="2584">
-              <caret line="86" column="7" selection-start-line="86" selection-start-column="7" selection-end-line="86" selection-end-column="7" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="973" max-vertical-offset="2601">
+              <caret line="96" column="22" selection-start-line="96" selection-start-column="22" selection-end-line="96" selection-end-column="22" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MapShard.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MapShard.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/vyki/game/tanks/objects/MapShard.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="3111">
-              <caret line="39" column="30" selection-start-line="39" selection-start-column="30" selection-end-line="39" selection-end-column="30" />
+            <state vertical-scroll-proportion="0.76898736" vertical-offset="2489" max-vertical-offset="3162">
+              <caret line="179" column="62" selection-start-line="179" selection-start-column="62" selection-end-line="179" selection-end-column="62" />
               <folding />
             </state>
           </provider>
@@ -101,6 +103,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="WARN_ABOUT_CRLF" value="false" />
+    <option name="PUSH_TAGS">
+      <GitPushTagMode />
+    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -111,11 +116,11 @@
         <option value="$PROJECT_DIR$/src/vyki/game/tanks/objects/Shots/Shot.java" />
         <option value="$PROJECT_DIR$/src/vyki/game/tanks/objects/MapRedactor.java" />
         <option value="$PROJECT_DIR$/src/vyki/game/tanks/objects/MapRender.java" />
-        <option value="$PROJECT_DIR$/src/vyki/game/tanks/objects/MapShard.java" />
         <option value="$PROJECT_DIR$/src/vyki/game/tanks/GlobalVariables.java" />
         <option value="$PROJECT_DIR$/src/vyki/game/tanks/objects/Tank.java" />
         <option value="$PROJECT_DIR$/src/vyki/game/tanks/Sprite.java" />
         <option value="$PROJECT_DIR$/src/vyki/game/tanks/Game.java" />
+        <option value="$PROJECT_DIR$/src/vyki/game/tanks/objects/MapShard.java" />
       </list>
     </option>
   </component>
@@ -421,7 +426,13 @@
       <option name="project" value="LOCAL" />
       <updated>1432732285403</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Rumata">
+      <created>1432732362021</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1432732362021</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -454,7 +465,7 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937366" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24108107" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24108107" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Regex Tester" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937366" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -522,7 +533,8 @@
       <TodoPanelSettings />
     </option>
     <MESSAGE value="test" />
-    <option name="LAST_COMMIT_MESSAGE" value="test" />
+    <MESSAGE value="Rumata" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rumata" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -941,18 +953,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/vyki/game/tanks/objects/MapShard.java">
+    <entry file="file://$PROJECT_DIR$/src/vyki/game/tanks/Game.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="3111">
-          <caret line="39" column="30" selection-start-line="39" selection-start-column="30" selection-end-line="39" selection-end-column="30" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="973" max-vertical-offset="2601">
+          <caret line="96" column="22" selection-start-line="96" selection-start-column="22" selection-end-line="96" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/vyki/game/tanks/Game.java">
+    <entry file="file://$PROJECT_DIR$/src/vyki/game/tanks/objects/MapShard.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.49275362" vertical-offset="765" max-vertical-offset="2584">
-          <caret line="86" column="7" selection-start-line="86" selection-start-column="7" selection-end-line="86" selection-end-column="7" />
+        <state vertical-scroll-proportion="0.76898736" vertical-offset="2489" max-vertical-offset="3162">
+          <caret line="179" column="62" selection-start-line="179" selection-start-column="62" selection-end-line="179" selection-end-column="62" />
           <folding />
         </state>
       </provider>

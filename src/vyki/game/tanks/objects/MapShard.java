@@ -28,8 +28,8 @@ public class MapShard{
         this.background = background;
         this.X= this.X + X;
         this.Y= this.Y + Y;
-        trueX = GlobalVariables.mapX;
-        trueY = GlobalVariables.mapY;
+        trueX = GlobalVariables.mapX + X;
+        trueY = GlobalVariables.mapY + Y;
         //System.out.println("trueX= "+trueX+" trueY= "+trueY);
         //System.out.println("trueX= "+trueX+" trueY= "+trueY);
     }
@@ -40,10 +40,9 @@ public class MapShard{
         g.setColor(Color.red);
         //g.fillRect(GlobalVariables.mapX + X, GlobalVariables.mapY + Y, 1000, 1000);
         g.drawImage(background, GlobalVariables.mapX + X, GlobalVariables.mapY + Y, null);
-
     }
 
-    public static void mapConstructor(Map shards,Image background){
+    public static void mapConstructor(ArrayList shards,Image background){
         int max = 500;
         int min = 0;
         int mcX=GlobalVariables.player1_X;
@@ -54,9 +53,9 @@ public class MapShard{
         if (mcX>max && mcY>max) {
             //System.out.println("1");
             if (!shardsCreated_1){
-                shards.put("3", new MapShard(1000, 0, background));
-                shards.put("4", new MapShard(1000, 1000, background));
-                shards.put("5", new MapShard(0, 1000, background));
+                shards.add(new MapShard(1000, 0, background));
+                shards.add(new MapShard(1000, 1000, background));
+                shards.add(new MapShard(0, 1000, background));
                 shardsCreated_1 = true;
                 playerLastZone = 1; // Zone
             }
@@ -65,9 +64,9 @@ public class MapShard{
         if (mcX>max && mcY<max) {
             //System.out.println("2");
             if (!shardsCreated_2){
-                shards.put("1", new MapShard(0*div, -1000*div, background));
-                shards.put("2", new MapShard(1000, -1000, background));
-                shards.put("3", new MapShard(1000, 0, background));
+                if (!(findShard(shards,0 * div, -1000 * div))) { shards.add(new MapShard(0 * div, -1000 * div, background)); System.out.println((!findShard(shards,0 * div, -1000 * div)));}
+                shards.add(new MapShard(1000, -1000, background));
+                shards.add(new MapShard(1000, 0, background));
                 //System.out.println("player1_X= "+GlobalVariables.player1_X+" player1_Y= "+ GlobalVariables.player1_Y);
                 //shardsCreated_2 = true;
                 playerLastZone = 2; // Zone 2
@@ -77,9 +76,9 @@ public class MapShard{
         if (mcX<max && mcY<max) {
             //System.out.println("3");
             if (!shardsCreated_3){
-                shards.put("0", new MapShard(-1000, -1000, background));
-                shards.put("1", new MapShard(0, -1000, background));
-                shards.put("7", new MapShard(-1000, 0, background));
+                shards.add(new MapShard(-1000, -1000, background));
+                shards.add(new MapShard(0, -1000, background));
+                shards.add(new MapShard(-1000, 0, background));
                 shardsCreated_3 = true;
                 playerLastZone = 3; // Zone 3
             }
@@ -88,9 +87,9 @@ public class MapShard{
         if (mcX<max && mcY>max) {
             //System.out.println("4");
             if (!shardsCreated_4){
-                shards.put("5", new MapShard(0, 1000, background));
-                shards.put("6", new MapShard(-1000, 1000, background));
-                shards.put("7", new MapShard(-1000, 0, background));
+                shards.add(new MapShard(0, 1000, background));
+                shards.add(new MapShard(-1000, 1000, background));
+                shards.add(new MapShard(-1000, 0, background));
                 shardsCreated_4 = true;
                 playerLastZone = 4; // Zone 4
             }
@@ -173,9 +172,13 @@ public class MapShard{
                 break;
             }
         }
-
-
-        //System.out.println("Constr: "+mcX+" "+mcY);
     }
 
+    public static boolean findShard(ArrayList<MapShard> shards, int X, int Y){
+        boolean val = false;
+        for ( MapShard shard : shards){
+            if (shard.trueX == X && shard.trueY == Y){val = true;} else val = false;
+        }
+        return val;
+    }
 }

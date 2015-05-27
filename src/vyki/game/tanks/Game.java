@@ -24,7 +24,8 @@ public class Game extends Canvas implements Runnable {
 	public static String NAME = "TANKS";
         private ArrayList<Tank> tanks;
         private ArrayList<PlayerShot> shots;
-        private Map<String, MapShard> shards;
+        private ArrayList<MapShard> shards;
+        //private Map<String, MapShard> shards;
         //public static int mapX=0;
         //public static int mapY=0;
         public Tank Player_1;
@@ -69,7 +70,7 @@ public class Game extends Canvas implements Runnable {
 		addKeyListener(new KeyInputHandler(this));
                 shots = new ArrayList<>();
                 tanks = new ArrayList<>();
-                shards = new HashMap<String, MapShard>();
+                shards = new ArrayList<>();
                     tanks.add(new Tank());
                     //tanks.add(new Tank());
                     Player_1 = tanks.get(0);
@@ -93,10 +94,10 @@ public class Game extends Canvas implements Runnable {
         //map
         g.drawImage(background, GlobalVariables.mapX, GlobalVariables.mapY, null);
         MapShard.mapConstructor(shards, background);
-         for ( MapShard shard : shards.values()){
+         for (MapShard shard : shards){
             shard.draw(g);
-
         }
+
         //System.out.println("size= " + shards.size());
         g.translate(GlobalVariables.mapX,GlobalVariables.mapY);
         //System.out.println("player1_X= "+GlobalVariables.player1_X+" player1_Y= "+GlobalVariables.player1_Y);
