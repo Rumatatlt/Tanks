@@ -91,16 +91,17 @@ public class Game extends Canvas implements Runnable {
         g.setColor(Color.black);
         g.fillRect(0, 0, getWidth(), getHeight());
 
+
         //map
-        g.drawImage(background, GlobalVariables.mapX, GlobalVariables.mapY, null);
+        g.drawImage(background, 0, 0, null);
         MapShard.mapConstructor(shards, background);
          for (MapShard shard : shards){
             shard.draw(g);
         }
 
-        //System.out.println("size= " + shards.size());
-        g.translate(GlobalVariables.mapX,GlobalVariables.mapY);
-        //System.out.println("player1_X= "+GlobalVariables.player1_X+" player1_Y= "+GlobalVariables.player1_Y);
+        g.drawString("MapX="+GlobalVariables.mapX+" MapY= "+ GlobalVariables.mapY,100,100);
+
+        g.translate(-400,400);
         //shots
         ListIterator itSH = shots.listIterator();
         while (itSH.hasNext()){
@@ -115,7 +116,9 @@ public class Game extends Canvas implements Runnable {
         for (Tank tank : tanks) {
             tank.getSprite().draw(g);
         }
+
         g.dispose();
+
         bs.show();
     }
 

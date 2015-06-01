@@ -30,8 +30,7 @@ public class MapShard{
         this.Y= this.Y + Y;
         trueX = GlobalVariables.mapX + X;
         trueY = GlobalVariables.mapY + Y;
-        //System.out.println("trueX= "+trueX+" trueY= "+trueY);
-        //System.out.println("trueX= "+trueX+" trueY= "+trueY);
+        System.out.println("trueX= "+trueX+" trueY= "+trueY);
     }
 
     public void draw(Graphics g) {
@@ -180,6 +179,8 @@ public class MapShard{
     public static boolean findShard(ArrayList<MapShard> shards, int X, int Y){
         boolean val = false;
         for ( MapShard shard : shards){
+            //System.out.println("shard.trueX= "+shard.trueX + " X= "+ X);
+            //System.out.println("shard.trueY= "+shard.trueY+ " Y= "+ Y);
             if (shard.trueX == X && shard.trueY == Y){val = true; System.out.println("Найден");} else val = false;
         }
         return val;
