@@ -31,6 +31,7 @@ public class MapShard{
         trueX = GlobalVariables.mapX + X;
         trueY = GlobalVariables.mapY + Y;
         System.out.println("trueX= "+trueX+" trueY= "+trueY);
+
     }
 
     public void draw(Graphics g) {
@@ -47,7 +48,7 @@ public class MapShard{
         int mcX=GlobalVariables.player1_X;
         int mcY=GlobalVariables.player1_Y;
         int div=GlobalVariables.player1_Y/1000+2;
-        shards.add(new MapShard(0, -1000 , background));
+        //shards.add(new MapShard(0, -1000 , background));
         //int mcY=GlobalVariables.player1_Y % GlobalVariables.mapSize;
         //Нижний правый
       /*  if (mcX>max && mcY>max) {
@@ -65,7 +66,7 @@ public class MapShard{
         if (mcX>max && mcY<max) {
             //System.out.println("2");
             if (!shardsCreated_2){
-                if ((findShard(shards,0 * div, -1000 * div))) {} else{ shards.add(new MapShard(0 * div, -1000 * div, background));}
+                if (!findShard(shards,0 * div, -1000 * div)) {} else{ shards.add(new MapShard(0 * div, -1000 * div, background));}
                 //shards.add(new MapShard(0 * div, -1000 * div, background));
                // shards.add(new MapShard(1000, -1000, background));
                // shards.add(new MapShard(1000, 0, background));
@@ -178,7 +179,7 @@ public class MapShard{
     }
 
     public static boolean findShard(ArrayList<MapShard> shards, int X, int Y){
-        boolean val = false;
+        boolean val = true;
         for ( MapShard shard : shards){
             //System.out.println("shard.trueX= "+shard.trueX + " X= "+ X);
             //System.out.println("shard.trueY= "+shard.trueY+ " Y= "+ Y);
