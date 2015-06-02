@@ -37,28 +37,28 @@ public class Tank  {
 
     public void moveLeft(){
         GlobalVariables.player1_X -=speed;
-        GlobalVariables.mapX=GlobalVariables.mapX+speed;
+        //GlobalVariables.mapX=GlobalVariables.mapX+speed;
         getSprite().x=GlobalVariables.player1_X;
         getSprite().setImage(getImage("tankLeft.png"));
         lastCourse = "left";
     }
     public void moveRight(){
         GlobalVariables.player1_X +=speed;
-        GlobalVariables.mapX=GlobalVariables.mapX-speed;
+        //GlobalVariables.mapX=GlobalVariables.mapX-speed;
         getSprite().x=GlobalVariables.player1_X;
         getSprite().setImage(getImage("tankRight.png"));
         lastCourse = "right";
     }
     public void moveDown(){
         GlobalVariables.player1_Y +=speed;
-        GlobalVariables.mapY=GlobalVariables.mapY-speed;
+        //GlobalVariables.mapY=GlobalVariables.mapY-speed;
         getSprite().y=GlobalVariables.player1_Y;
         getSprite().setImage(getImage("tankDown.png"));
         lastCourse = "down";
     }
     public void moveUp(){
         GlobalVariables.player1_Y -=speed;
-        GlobalVariables.mapY=GlobalVariables.mapY+speed;
+        //GlobalVariables.mapY=GlobalVariables.mapY+speed;
         getSprite().y=GlobalVariables.player1_Y;
         getSprite().setImage(getImage("tankUp.png"));
         lastCourse = "up";
@@ -98,7 +98,7 @@ public class Tank  {
     }
 
     public Sprite getSprite(String path) {
-        Sprite sprite = new Sprite(getImage(path), GlobalVariables.player1_X, GlobalVariables.player1_Y);
+        Sprite sprite = new Sprite(getImage(path), GlobalVariables.respawn_X, GlobalVariables.prespawn_Y);
         return sprite;
     }
     public Image getImage(String path) {

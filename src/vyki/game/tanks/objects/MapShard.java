@@ -47,6 +47,7 @@ public class MapShard{
         int mcX=GlobalVariables.player1_X;
         int mcY=GlobalVariables.player1_Y;
         int div=GlobalVariables.player1_Y/1000+2;
+        shards.add(new MapShard(0, -1000 , background));
         //int mcY=GlobalVariables.player1_Y % GlobalVariables.mapSize;
         //Нижний правый
       /*  if (mcX>max && mcY>max) {

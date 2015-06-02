@@ -93,15 +93,17 @@ public class Game extends Canvas implements Runnable {
 
 
         //map
-        g.drawImage(background, 0, 0, null);
+        g.drawImage(background, GlobalVariables.mapX-GlobalVariables.player1_X, GlobalVariables.mapY-GlobalVariables.player1_Y, null);
         MapShard.mapConstructor(shards, background);
          for (MapShard shard : shards){
             shard.draw(g);
         }
         g.setFont(new Font("default", Font.BOLD, 16));
-        g.drawString("MapX="+GlobalVariables.mapX+" MapY= "+ GlobalVariables.mapY,50,750);
+        g.setColor(Color.gray);
+        g.drawString("player_X="+GlobalVariables.player1_X+" player_Y= "+ GlobalVariables.player1_Y,50,750);
 
-        g.translate(0,0);
+        g.translate(-GlobalVariables.player1_X+400,-GlobalVariables.player1_Y+400);
+
         //shots
         ListIterator itSH = shots.listIterator();
         while (itSH.hasNext()){
@@ -118,7 +120,6 @@ public class Game extends Canvas implements Runnable {
         }
 
         g.dispose();
-
         bs.show();
     }
 
@@ -135,6 +136,7 @@ public class Game extends Canvas implements Runnable {
         if (GlobalVariables.spaceReleased) {
                 GlobalVariables.spaceReleased = false;
                 Player_1.shoot((ArrayList) shots);
+
             //System.out.println("MapCoord: "+GlobalVariables.mapX+" "+GlobalVariables.mapY);
         }
        /* //Player 2

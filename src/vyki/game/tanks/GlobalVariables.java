@@ -38,13 +38,10 @@ public class GlobalVariables {
     public static PlayerShot shot;
     public static int player1_X = 0;
     public static int player1_Y = 0;
-    public static int mapX = 400;
-    public static int mapY = 400;
+    public static int respawn_X = 0;
+    public static int prespawn_Y = 0;
+    public static int mapX = 0;
+    public static int mapY = 0;
 
-    
-    public static final int directionRight = 0;
-    public static final int directionUP = 90;
-    public static final int directionLeft = 180;
-    public static final int directionDown = 270;
-    
+
 }
