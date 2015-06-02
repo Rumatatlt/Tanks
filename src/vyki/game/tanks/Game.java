@@ -98,10 +98,10 @@ public class Game extends Canvas implements Runnable {
          for (MapShard shard : shards){
             shard.draw(g);
         }
+        g.setFont(new Font("default", Font.BOLD, 16));
+        g.drawString("MapX="+GlobalVariables.mapX+" MapY= "+ GlobalVariables.mapY,50,750);
 
-        g.drawString("MapX="+GlobalVariables.mapX+" MapY= "+ GlobalVariables.mapY,100,100);
-
-        g.translate(-400,400);
+        g.translate(0,0);
         //shots
         ListIterator itSH = shots.listIterator();
         while (itSH.hasNext()){
