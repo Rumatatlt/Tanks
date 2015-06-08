@@ -42,6 +42,7 @@ public class MapShard{
         g.drawImage(background, X-GlobalVariables.player1_X-100,Y-GlobalVariables.player1_Y-100, null);
     }
 
+
     public static void mapConstructor(ArrayList<MapShard> shards,Image background){
         int max = 0;
         int min = 0;
