@@ -102,7 +102,7 @@ public class Game extends Canvas implements Runnable {
         g.setColor(Color.gray);
         g.drawString("player_X="+GlobalVariables.player1_X+" player_Y= "+ GlobalVariables.player1_Y,50,750);
 
-        g.translate(-GlobalVariables.player1_X+400,-GlobalVariables.player1_Y+400);
+        g.translate(-GlobalVariables.player1_X+GlobalVariables.WIDTH/2,-GlobalVariables.player1_Y+GlobalVariables.HEIGHT/2);
 
         //shots
         ListIterator itSH = shots.listIterator();

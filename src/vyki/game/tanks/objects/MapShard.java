@@ -43,7 +43,7 @@ public class MapShard{
     }
 
     public static void mapConstructor(ArrayList shards,Image background){
-        int max = 500;
+        int max = 300;
         int min = 0;
         int mcX=GlobalVariables.player1_X;
         int mcY=GlobalVariables.player1_Y;
@@ -64,9 +64,9 @@ public class MapShard{
         */
         //Верхний правый
         if (mcX>max && mcY<max) {
-            //System.out.println("2");
+            System.out.println("2");
             if (!shardsCreated_2){
-                if (!findShard(shards,0 * div, -1000 * div)) {} else{ shards.add(new MapShard(0 * div, -1000 * div, background));}
+                if (findShard(shards,0 * div, -1000 * div)) {shards.add(new MapShard(0 * div, -1000 * div, background));}
                 //shards.add(new MapShard(0 * div, -1000 * div, background));
                // shards.add(new MapShard(1000, -1000, background));
                // shards.add(new MapShard(1000, 0, background));
@@ -179,7 +179,7 @@ public class MapShard{
     }
 
     public static boolean findShard(ArrayList<MapShard> shards, int X, int Y){
-        boolean val = true;
+        boolean val = false;
         for ( MapShard shard : shards){
             //System.out.println("shard.trueX= "+shard.trueX + " X= "+ X);
             //System.out.println("shard.trueY= "+shard.trueY+ " Y= "+ Y);
