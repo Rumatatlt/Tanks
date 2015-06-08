@@ -47,46 +47,41 @@ public class MapShard{
         int min = 0;
         int mcX=GlobalVariables.player1_X;
         int mcY=GlobalVariables.player1_Y;
-        int divY=GlobalVariables.player1_Y/500+1;
+        int divX=GlobalVariables.player1_X/100;
+        int divY=GlobalVariables.player1_Y/100;
         //shards.add(new MapShard(0, -1000 , background));
         //int mcY=GlobalVariables.player1_Y % GlobalVariables.mapSize;
         //Нижний правый
-      /*  if (mcX>max && mcY>max) {
+        if (mcX>max && mcY>max) {
             //System.out.println("1");
             if (!shardsCreated_1){
-                shards.add(new MapShard(1000, 0, background));
-                shards.add(new MapShard(1000, 1000, background));
-                shards.add(new MapShard(0, 1000, background));
-                shardsCreated_1 = true;
+                if (!findShard(shards,1000 * divX, 0)) { shards.add(new MapShard(1000 * divX, 0, background));}
+                if (!findShard(shards,1000 * divX, 1000 * divY)) { shards.add(new MapShard(1000 * divX, 1000 * divY, background));}
+                if (!findShard(shards,0 , 1000 * divY)) { shards.add(new MapShard(0, 1000 * divY, background));}
+                //shardsCreated_1 = true;
                 playerLastZone = 1; // Zone
             }
         }
-        */
+
         //Верхний правый
         if (mcX>max && mcY<max) {
-            //System.out.println("div= "+div);
             if (!shardsCreated_2){
-                //System.out.println(-1000 * divY);
-                if (!findShard(shards,0 , -1000 * divY)) {
-                    System.out.println(-1000 * divY);
-                    shards.add(new MapShard(0, -1000 * divY, background));}
-                //if (true) {shards.add(new MapShard(0, -1000, background)); }
-                //shards.add(new MapShard(0 * div, -1000 * div, background));
-                // shards.add(new MapShard(1000, -1000, background));
-                // shards.add(new MapShard(1000, 0, background));
-                //System.out.println("player1_X= "+GlobalVariables.player1_X+" player1_Y= "+ GlobalVariables.player1_Y);
+                if (!findShard(shards,0 , -1000 * divY)) { shards.add(new MapShard(0, -1000 * divY, background));}
+                if (!findShard(shards,1000*divX , -1000 * -divY)) { shards.add(new MapShard(1000*divX, -1000 * -divY, background));}
+                if (!findShard(shards,1000*divX , 0)) { shards.add(new MapShard(1000*divX, 0, background));}
+            }
                 //shardsCreated_2 = true;
                 playerLastZone = 2; // Zone 2
-            }
         }
+
         //Верхний левый
-       /* if (mcX<max && mcY<max) {
+        if (mcX<max && mcY<max) {
             //System.out.println("3");
             if (!shardsCreated_3){
                 shards.add(new MapShard(-1000, -1000, background));
                 shards.add(new MapShard(0, -1000, background));
                 shards.add(new MapShard(-1000, 0, background));
-                shardsCreated_3 = true;
+                //shardsCreated_3 = true;
                 playerLastZone = 3; // Zone 3
             }
         }
@@ -97,10 +92,11 @@ public class MapShard{
                 shards.add(new MapShard(0, 1000, background));
                 shards.add(new MapShard(-1000, 1000, background));
                 shards.add(new MapShard(-1000, 0, background));
-                shardsCreated_4 = true;
+                //shardsCreated_4 = true;
                 playerLastZone = 4; // Zone 4
             }
         }
+        /*
         switch (playerLastZone){
             case 1:{
                 if (shardsCreated_2){
@@ -191,7 +187,7 @@ public class MapShard{
                 val = true;
                 break;
             } else {
-                System.out.println("Не найден");
+                //System.out.println("shard not found");
                 val = false;
             }
 
