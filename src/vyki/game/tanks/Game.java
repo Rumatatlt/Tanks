@@ -98,6 +98,7 @@ public class Game extends Canvas implements Runnable {
          for (MapShard shard : shards){
             shard.draw(g);
         }
+
         g.setFont(new Font("default", Font.BOLD, 16));
         g.setColor(Color.gray);
         g.drawString("player_X="+GlobalVariables.player1_X+" player_Y= "+ GlobalVariables.player1_Y,50,750);
@@ -118,7 +119,7 @@ public class Game extends Canvas implements Runnable {
         for (Tank tank : tanks) {
             tank.getSprite().draw(g);
         }
-
+        System.out.println("size shards= "+shards.size());
         g.dispose();
         bs.show();
     }

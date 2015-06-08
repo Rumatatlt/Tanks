@@ -26,11 +26,11 @@ public class MapShard{
 
     public MapShard(int X, int Y, Image background){
         this.background = background;
-        this.X= this.X + X;
-        this.Y= this.Y + Y;
+        this.X= this.X+X;
+        this.Y= this.Y+Y;
         trueX = GlobalVariables.mapX + X;
         trueY = GlobalVariables.mapY + Y;
-        System.out.println("trueX= "+trueX+" trueY= "+trueY);
+       // System.out.println("trueX= "+trueX+" trueY= "+trueY);
 
     }
 
@@ -38,16 +38,16 @@ public class MapShard{
         //Graphics2D g2d = (Graphics2D) g;
         //g2d.rotate(Math.toRadians(90));
         g.setColor(Color.red);
-        //g.fillRect(GlobalVariables.mapX + X, GlobalVariables.mapY + Y, 1000, 1000);
-        g.drawImage(background, GlobalVariables.mapX + X, GlobalVariables.mapY + Y, null);
+        //g.fillRect( X-GlobalVariables.player1_X-100,  Y-GlobalVariables.player1_Y-100, 1000, 1000);
+        g.drawImage(background, X-GlobalVariables.player1_X-100,Y-GlobalVariables.player1_Y-100, null);
     }
 
-    public static void mapConstructor(ArrayList shards,Image background){
-        int max = 300;
+    public static void mapConstructor(ArrayList<MapShard> shards,Image background){
+        int max = 0;
         int min = 0;
         int mcX=GlobalVariables.player1_X;
         int mcY=GlobalVariables.player1_Y;
-        int div=GlobalVariables.player1_Y/1000+2;
+        int div=GlobalVariables.player1_Y/1000+1;
         //shards.add(new MapShard(0, -1000 , background));
         //int mcY=GlobalVariables.player1_Y % GlobalVariables.mapSize;
         //Нижний правый
@@ -64,14 +64,15 @@ public class MapShard{
         */
         //Верхний правый
         if (mcX>max && mcY<max) {
-            System.out.println("2");
+            //System.out.println("div= "+div);
             if (!shardsCreated_2){
-                if (findShard(shards,0 * div, -1000 * div)) {shards.add(new MapShard(0 * div, -1000 * div, background));}
+               // if (findShard(shards,0 * div, -1000 * div)) {shards.add(new MapShard(0 * div, -1000 * div, background)); System.out.println("asd= "+ -1000 * div);}
+                if (true) {shards.add(new MapShard(0, -1000, background)); }
                 //shards.add(new MapShard(0 * div, -1000 * div, background));
                // shards.add(new MapShard(1000, -1000, background));
                // shards.add(new MapShard(1000, 0, background));
                 //System.out.println("player1_X= "+GlobalVariables.player1_X+" player1_Y= "+ GlobalVariables.player1_Y);
-                //shardsCreated_2 = true;
+                shardsCreated_2 = true;
                 playerLastZone = 2; // Zone 2
             }
         }
