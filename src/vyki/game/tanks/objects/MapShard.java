@@ -47,7 +47,7 @@ public class MapShard{
         int min = 0;
         int mcX=GlobalVariables.player1_X;
         int mcY=GlobalVariables.player1_Y;
-        int div=GlobalVariables.player1_Y/1000+1;
+        int divY=GlobalVariables.player1_Y/500+1;
         //shards.add(new MapShard(0, -1000 , background));
         //int mcY=GlobalVariables.player1_Y % GlobalVariables.mapSize;
         //Нижний правый
@@ -66,13 +66,16 @@ public class MapShard{
         if (mcX>max && mcY<max) {
             //System.out.println("div= "+div);
             if (!shardsCreated_2){
-               // if (findShard(shards,0 * div, -1000 * div)) {shards.add(new MapShard(0 * div, -1000 * div, background)); System.out.println("asd= "+ -1000 * div);}
-                if (true) {shards.add(new MapShard(0, -1000, background)); }
+                //System.out.println(-1000 * divY);
+                if (!findShard(shards,0 , -1000 * divY)) {
+                    System.out.println(-1000 * divY);
+                    shards.add(new MapShard(0, -1000 * divY, background));}
+                //if (true) {shards.add(new MapShard(0, -1000, background)); }
                 //shards.add(new MapShard(0 * div, -1000 * div, background));
-               // shards.add(new MapShard(1000, -1000, background));
-               // shards.add(new MapShard(1000, 0, background));
+                // shards.add(new MapShard(1000, -1000, background));
+                // shards.add(new MapShard(1000, 0, background));
                 //System.out.println("player1_X= "+GlobalVariables.player1_X+" player1_Y= "+ GlobalVariables.player1_Y);
-                shardsCreated_2 = true;
+                //shardsCreated_2 = true;
                 playerLastZone = 2; // Zone 2
             }
         }
@@ -184,7 +187,14 @@ public class MapShard{
         for ( MapShard shard : shards){
             //System.out.println("shard.trueX= "+shard.trueX + " X= "+ X);
             //System.out.println("shard.trueY= "+shard.trueY+ " Y= "+ Y);
-            if (shard.trueX == X && shard.trueY == Y){val = true; System.out.println("Найден");} else val = false;
+            if (shard.X == X && shard.Y == Y){
+                val = true;
+                break;
+            } else {
+                System.out.println("Не найден");
+                val = false;
+            }
+
         }
         return val;
     }
