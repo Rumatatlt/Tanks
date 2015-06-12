@@ -120,7 +120,7 @@ public class Game extends Canvas implements Runnable {
         for (Tank tank : tanks) {
             tank.getSprite().draw(g);
         }
-        //System.out.println("size shards= "+shards.size());
+        //System.out.println("total shards= "+shards.size());
         g.dispose();
         bs.show();
     }
