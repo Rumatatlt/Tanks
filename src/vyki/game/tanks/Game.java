@@ -85,7 +85,7 @@ public class Game extends Canvas implements Runnable {
             return;
         }
         Graphics g = bs.getDrawGraphics();
-        Path path = Paths.get(".\\src\\vyki\\game\\image\\Background1.png");
+        Path path = Paths.get(".\\src\\vyki\\game\\image\\Background0.png");
         Image background = Toolkit.getDefaultToolkit().getImage(String.valueOf(path));
 
         g.setColor(Color.black);

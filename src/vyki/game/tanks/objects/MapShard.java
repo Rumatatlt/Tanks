@@ -58,7 +58,7 @@ public class MapShard{
         //shards.add(new MapShard(0, -1000 , background));
         //int mcY=GlobalVariables.player1_Y % GlobalVariables.mapSize;
         //Нижний правый
-        if (mcX>=max && mcY>=max) {
+        //if (mcX>=max && mcY>=max) {
             //System.out.println("1");
             if (!shardsCreated_1){
                 //if (!findShard(shards,1000 * divX, 0)) { shards.add(new MapShard(1000 * divX, 0, background));}
@@ -70,20 +70,20 @@ public class MapShard{
                 //shardsCreated_1 = true;
                 //playerLastZone = 1; // Zone
             }
-        }
+       // }
 
         //Верхний правый
-        if (mcX>=max && mcY<=max) {
+       // if (mcX>=max && mcY<=max) {
             if (!shardsCreated_2){
                shards.add(new MapShard(0, -1000, background));
                 shards.add(new MapShard(1000, -1000, background));
                 shards.add(new MapShard(1000, 0, background));
             }
 
-        }
+        //}
 
         //Верхний левый
-        if (mcX<=max && mcY<=max) {
+//        if (mcX<=max && mcY<=max) {
             //System.out.println("3");
             if (!shardsCreated_3){
                 shards.add(new MapShard(-1000, -1000, background));
@@ -91,9 +91,9 @@ public class MapShard{
                 shards.add(new MapShard(-1000, 0, background));
 
             }
-        }
+  //      }
         //Нижний левый
-        if (mcX<=max && mcY>=max) {
+    //    if (mcX<=max && mcY>=max) {
             //System.out.println("4");
             if (!shardsCreated_4){
                 shards.add(new MapShard(0, 1000, background));
@@ -101,88 +101,9 @@ public class MapShard{
                 shards.add(new MapShard(-1000, 0, background));
 
             }
-        }
+      //  }
 }
-        /*
-        switch (playerLastZone){
-            case 1:{
-                if (shardsCreated_2){
-                    shards.remove();
-                    shards.remove("2");
-                    shardsCreated_2=false;
-                }
-                if (shardsCreated_3){
-                    shards.remove("0");
-                    shards.remove("1");
-                    shards.remove("7");
-                    shardsCreated_3=false;
-                }
-                if (shardsCreated_4){
-                    shards.remove("6");
-                    shards.remove("7");
-                    shardsCreated_4=false;
-                }
-                break;
-            }
-            case 2:{
-                if (shardsCreated_1){
-                    shards.remove("4");
-                    shards.remove("5");
-                    shardsCreated_1=false;
-                }
-                if (shardsCreated_3){
-                    shards.remove("0");
-                    shards.remove("7");
-                    shardsCreated_3=false;
-                }
-                if (shardsCreated_4){
-                    shards.remove("5");
-                    shards.remove("6");
-                    shards.remove("7");
-                    shardsCreated_4=false;
-                }
-                break;
-            }
-            case 3:{
-                if (shardsCreated_1){
-                    shards.remove("3");
-                    shards.remove("4");
-                    shards.remove("5");
-                    shardsCreated_1=false;
-                }
-                if (shardsCreated_2){
-                    shards.remove("2");
-                    shards.remove("3");
-                    shardsCreated_2=false;
-                }
-                if (shardsCreated_4){
-                    shards.remove("5");
-                    shards.remove("6");
-                    shardsCreated_4=false;
-                }
-                break;
-            }
-            case 4:{
-                if (shardsCreated_1){
-                    shards.remove("3");
-                    shards.remove("4");
-                    shardsCreated_1=false;
-                }
-                if (shardsCreated_2){
-                    shards.remove("1");
-                    shards.remove("2");
-                    shards.remove("3");
-                    shardsCreated_2=false;
-                }
-                if (shardsCreated_3){
-                    shards.remove("0");
-                    shards.remove("1");
-                    shardsCreated_3=false;
-                }
-                break;
-            }
-        }
-        */
+
 
 
     public static boolean findShard(ArrayList<MapShard> shards, int X, int Y){
