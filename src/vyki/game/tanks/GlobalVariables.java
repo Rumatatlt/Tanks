@@ -40,6 +40,10 @@ public class GlobalVariables {
     public static int player1_Y = 0;
     public static int respawn_X = 0;
     public static int prespawn_Y = 0;
+    public static int divX;
+    public static int divY;
+    public static int homeLocation_X = 0;
+    public static int homeLocation_Y = 0;
     public static int mapX = -100;
     public static int mapY = -100;
 

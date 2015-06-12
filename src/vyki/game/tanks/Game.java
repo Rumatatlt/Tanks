@@ -101,7 +101,9 @@ public class Game extends Canvas implements Runnable {
 
         g.setFont(new Font("default", Font.BOLD, 16));
         g.setColor(Color.gray);
-        g.drawString("player_X="+GlobalVariables.player1_X+" player_Y= "+ GlobalVariables.player1_Y,50,750);
+        g.drawString("player_X="+GlobalVariables.player1_X+" player_Y= "+ GlobalVariables.player1_Y,50,720);
+        g.drawString("div X= "+GlobalVariables.divX+" div Y= "+ GlobalVariables.divY,50,740);
+        g.drawString("homeLocation_X= "+GlobalVariables.homeLocation_X+" homeLocation_Y= "+ GlobalVariables.homeLocation_Y,50,700);
 
         g.translate(-GlobalVariables.player1_X+GlobalVariables.WIDTH/2,-GlobalVariables.player1_Y+GlobalVariables.HEIGHT/2);
 
@@ -125,13 +127,13 @@ public class Game extends Canvas implements Runnable {
     }
 
 	public void update() {
-		if (GlobalVariables.leftPressed) {
+		if (GlobalVariables.APressed) {
                 Player_1.moveLeft();
-		} else if (GlobalVariables.rightPressed) {
+		} else if (GlobalVariables.DPressed) {
                 Player_1.moveRight();
-		} else if (GlobalVariables.downPressed) {
+		} else if (GlobalVariables.SPressed) {
                 Player_1.moveDown();
-        } else if (GlobalVariables.upPressed) {
+        } else if (GlobalVariables.WPressed) {
                 Player_1.moveUp();
         }
         if (GlobalVariables.spaceReleased) {
