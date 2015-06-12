@@ -7,9 +7,7 @@ import vyki.game.tanks.objects.Shots.PlayerShot;
 import java.awt.*;
 import java.util.*;
 
-/**
- * Created by selo0215 on 15.05.2015.
- */
+
 public class MapShard{
     private String course;
     private Image background;
@@ -46,14 +44,16 @@ public class MapShard{
     public static void mapConstructor(ArrayList<MapShard> shards,Image background){
         int max = 0;
         int min = 0;
+        int charX;
+        int charY;
         int mcX=GlobalVariables.player1_X;
         int mcY=GlobalVariables.player1_Y;
-        int divX=GlobalVariables.player1_X/100;
-        int divY=GlobalVariables.player1_Y/100;
-        GlobalVariables.homeLocation_X = ((GlobalVariables.player1_X+500)/1000)*1000;
-        GlobalVariables.homeLocation_Y = ((GlobalVariables.player1_Y+500)/1000)*1000;
-        GlobalVariables.divX = divX;
-        GlobalVariables.divY = divY;
+        //int divX=GlobalVariables.player1_X/100;
+        //int divY=GlobalVariables.player1_Y/100;
+        if (GlobalVariables.player1_X>=0){charX = 1;} else {charX = -1;}
+        if (GlobalVariables.player1_Y>=0){charY = 1;} else {charY = -1;}
+        GlobalVariables.homeLocation_X = ((GlobalVariables.player1_X+500*charX)/1000)*1000;
+        GlobalVariables.homeLocation_Y = ((GlobalVariables.player1_Y+500*charY)/1000)*1000;
 
         //shards.add(new MapShard(0, -1000 , background));
         //int mcY=GlobalVariables.player1_Y % GlobalVariables.mapSize;
@@ -71,40 +71,38 @@ public class MapShard{
                 //playerLastZone = 1; // Zone
             }
         }
-/*
+
         //Верхний правый
-        if (mcX>max && mcY<max) {
+        if (mcX>=max && mcY<=max) {
             if (!shardsCreated_2){
-                if (!findShard(shards,0 , -1000 * divY)) { shards.add(new MapShard(0, -1000 * divY, background));}
-                if (!findShard(shards,1000*divX , -1000 * -divY)) { shards.add(new MapShard(1000*divX, -1000 * -divY, background));}
-                if (!findShard(shards,1000*divX , 0)) { shards.add(new MapShard(1000*divX, 0, background));}
+               shards.add(new MapShard(0, -1000, background));
+                shards.add(new MapShard(1000, -1000, background));
+                shards.add(new MapShard(1000, 0, background));
             }
-                //shardsCreated_2 = true;
-                playerLastZone = 2; // Zone 2
+
         }
 
         //Верхний левый
-        if (mcX<max && mcY<max) {
+        if (mcX<=max && mcY<=max) {
             //System.out.println("3");
             if (!shardsCreated_3){
                 shards.add(new MapShard(-1000, -1000, background));
                 shards.add(new MapShard(0, -1000, background));
                 shards.add(new MapShard(-1000, 0, background));
-                //shardsCreated_3 = true;
-                playerLastZone = 3; // Zone 3
+
             }
         }
         //Нижний левый
-        if (mcX<max && mcY>max) {
+        if (mcX<=max && mcY>=max) {
             //System.out.println("4");
             if (!shardsCreated_4){
                 shards.add(new MapShard(0, 1000, background));
                 shards.add(new MapShard(-1000, 1000, background));
                 shards.add(new MapShard(-1000, 0, background));
-                //shardsCreated_4 = true;
-                playerLastZone = 4; // Zone 4
+
             }
-        }*/
+        }
+}
         /*
         switch (playerLastZone){
             case 1:{
@@ -185,7 +183,7 @@ public class MapShard{
             }
         }
         */
-    }
+
 
     public static boolean findShard(ArrayList<MapShard> shards, int X, int Y){
         boolean val = false;

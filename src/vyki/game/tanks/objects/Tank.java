@@ -26,7 +26,7 @@ public class Tank  {
 
     private Sprite sprite;
     public int HP = 100;
-    public int speed = 6;
+    public int speed = 20;
     public int damage = 20;
     private String lastCourse="up";
 
