@@ -13,6 +13,7 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
+import vyki.game.tanks.objects.Environment.EnemyTank;
 import vyki.game.tanks.objects.MapShard;
 import vyki.game.tanks.objects.Tank;
 import vyki.game.tanks.objects.Shots.PlayerShot;
@@ -25,6 +26,7 @@ public class Game extends Canvas implements Runnable {
         private ArrayList<Tank> tanks;
         private ArrayList<PlayerShot> shots;
         private ArrayList<MapShard> shards;
+        private ArrayList<EnemyTank> enemyTanks;
         //private Map<String, MapShard> shards;
         //public static int mapX=0;
         //public static int mapY=0;
@@ -94,7 +96,7 @@ public class Game extends Canvas implements Runnable {
 
         //map
         g.drawImage(background, GlobalVariables.mapX-GlobalVariables.player1_X, GlobalVariables.mapY-GlobalVariables.player1_Y, null);
-        MapShard.mapConstructor(shards, background);
+        MapShard.mapConstructor(shards);
          for (MapShard shard : shards){
             shard.draw(g);
         }
