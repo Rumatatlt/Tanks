@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import vyki.game.tanks.GlobalVariables;
 import vyki.game.tanks.Sprite;
 import vyki.game.tanks.objects.Drawable;
+import vyki.game.tanks.objects.Environment.EnemyTank;
 import vyki.game.tanks.objects.Tank;
 
 import javax.imageio.ImageIO;
@@ -52,7 +53,7 @@ public class PlayerShot implements Drawable {
         this.sprite = sprite;
     }
     
-    public boolean Hit(ArrayList players){
+    public boolean Hit(ArrayList<EnemyTank> players){
         boolean strike = false;  
         if (Tank.inHitbox(sprite.x-10, sprite.y-12, players)) {strike = true;}
         switch (this.course){

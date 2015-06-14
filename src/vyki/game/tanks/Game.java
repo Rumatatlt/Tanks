@@ -117,7 +117,7 @@ public class Game extends Canvas implements Runnable {
         while (itSH.hasNext()){
             PlayerShot shot = (PlayerShot) itSH.next();
             shot.getSprite().draw(g);
-            if (shot.Hit((ArrayList) tanks)) {
+            if (shot.Hit((ArrayList) enemyTanks)) {
                 System.out.println("Попал!");
                 itSH.remove();
             }

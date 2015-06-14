@@ -13,6 +13,7 @@ import java.util.ListIterator;
 
 import vyki.game.tanks.GlobalVariables;
 import vyki.game.tanks.Sprite;
+import vyki.game.tanks.objects.Environment.EnemyTank;
 import vyki.game.tanks.objects.Shots.PlayerShot;
 import javax.imageio.ImageIO;
 
@@ -64,7 +65,7 @@ public class Tank  {
         System.out.println("Map coord: "+GlobalVariables.mapX +" "+GlobalVariables.mapY);
     }
 
-    public static boolean inHitbox(int snX, int snY, ArrayList<Tank> players){
+    public static boolean inHitbox(int snX, int snY, ArrayList<EnemyTank> players){
         int TankX,TankY, radius;
         boolean result = false;
         ListIterator it = players.listIterator();
@@ -72,7 +73,7 @@ public class Tank  {
         radius = 15;
 
        while(it.hasNext()){
-           Tank pr = (Tank) it.next();       
+           EnemyTank pr = (EnemyTank) it.next();
            coord = pr.getSprite().getCoordinates();
            TankX=coord[0];
            TankY=coord[1];

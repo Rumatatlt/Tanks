@@ -53,8 +53,8 @@ public class EnemyTank{
 
     private static boolean findShard(ArrayList<EnemyTank> enemyTanks, int X, int Y){
         boolean val = false;
-        for ( EnemyTank shard : enemyTanks){
-            if (shard.X == (X + GlobalVariables.homeLocation_X) && shard.Y == (Y + GlobalVariables.homeLocation_Y)){
+        for ( EnemyTank tank : enemyTanks){
+            if (tank.X == (X + GlobalVariables.homeLocation_X) && tank.Y == (Y + GlobalVariables.homeLocation_Y)){
                 val = true;
                 break;
             } else {
