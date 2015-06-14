@@ -2,28 +2,29 @@ package vyki.game.tanks.objects.Environment;
 
 import vyki.game.tanks.GlobalVariables;
 import vyki.game.tanks.Sprite;
-import vyki.game.tanks.TankInterface;
-import vyki.game.tanks.objects.Tank;
-
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 
 public class EnemyTank{
     private Sprite sprite;
-    public int HP = 100;
     public int speed = 20;
-    public int damage = 20;
     private String lastCourse="up";
     public int X = 0;
     public int Y = 0;
+    //private static Path path = Paths.get(".\\build\\classes\\tankUP.png");
+    //private static Image background = Toolkit.getDefaultToolkit().getImage(String.valueOf(path));
 
     public EnemyTank() {
         this.sprite = getSprite("tankUP.png");
+        this.X = GlobalVariables.homeLocation_X + 400;
+        this.Y = GlobalVariables.homeLocation_Y + 400;
     }
 
     public void moveLeft(){
@@ -38,15 +39,15 @@ public class EnemyTank{
 
     }
 
-    public void enemyTankConstructor(ArrayList<EnemyTank> enemyTanks){
-
+    public static void enemyTankConstructor(ArrayList<EnemyTank> enemyTanks){
+        enemyTanks.add(new EnemyTank());
     }
 
     public Sprite getSprite() {
         return sprite;
     }
     public Sprite getSprite(String path) {
-        Sprite sprite = new Sprite(getImage(path), GlobalVariables.respawn_X, GlobalVariables.prespawn_Y);
+        Sprite sprite = new Sprite(getImage(path), X, Y);
         return sprite;
     }
     public Image getImage(String path) {

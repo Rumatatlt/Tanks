@@ -18,6 +18,8 @@ import vyki.game.tanks.objects.MapShard;
 import vyki.game.tanks.objects.Tank;
 import vyki.game.tanks.objects.Shots.PlayerShot;
 
+import static vyki.game.tanks.objects.Environment.EnemyTank.enemyTankConstructor;
+
 
 public class Game extends Canvas implements Runnable {
 	private static final long serialVersionUID = 1L;
@@ -97,6 +99,7 @@ public class Game extends Canvas implements Runnable {
         //map
         g.drawImage(background, GlobalVariables.mapX-GlobalVariables.player1_X, GlobalVariables.mapY-GlobalVariables.player1_Y, null);
         MapShard.mapConstructor(shards);
+        enemyTankConstructor(enemyTanks);
          for (MapShard shard : shards){
             shard.draw(g);
         }
@@ -122,6 +125,10 @@ public class Game extends Canvas implements Runnable {
         for (Tank tank : tanks) {
             tank.getSprite().draw(g);
         }
+/*
+        for (EnemyTank enemyTank : enemyTanks) {
+            enemyTank.getSprite().draw(g);
+        }*/
         //System.out.println("total shards= "+shards.size());
         g.dispose();
         bs.show();
