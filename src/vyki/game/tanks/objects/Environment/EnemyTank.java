@@ -40,7 +40,7 @@ public class EnemyTank{
     }
 
     public static void enemyTankConstructor(ArrayList<EnemyTank> enemyTanks){
-        enemyTanks.add(new EnemyTank());
+        //enemyTanks.add(new EnemyTank());
     }
 
     public Sprite getSprite() {
