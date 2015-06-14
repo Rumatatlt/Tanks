@@ -19,6 +19,7 @@ public class EnemyTank{
     public int X = 0;
     public int Y = 0;
     private static int collSize = 1;
+    private boolean alive = true;
     //private static Path path = Paths.get(".\\build\\classes\\tankUP.png");
     //private static Image background = Toolkit.getDefaultToolkit().getImage(String.valueOf(path));
 
@@ -40,8 +41,8 @@ public class EnemyTank{
         lastCourse = "left";
     }
 
-    public void enemyTankAI(){
-
+    public static void enemyTankAI(){
+        System.out.println("1111");
     }
 
     public static void enemyTankConstructor(ArrayList<EnemyTank> enemyTanks){

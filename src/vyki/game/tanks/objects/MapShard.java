@@ -12,7 +12,7 @@ public class MapShard{
     private int X = 0;
     private int Y = 0;
     private static int collSize = 1;
-    private static Path path = Paths.get(".\\src\\vyki\\game\\image\\Background1.png");
+    private static Path path = Paths.get(".\\src\\vyki\\game\\image\\Background0.png");
     private static Image background = Toolkit.getDefaultToolkit().getImage(String.valueOf(path));
 
     public MapShard(int X, int Y){

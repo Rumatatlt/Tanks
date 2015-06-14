@@ -90,7 +90,7 @@ public class Game extends Canvas implements Runnable {
             return;
         }
         Graphics g = bs.getDrawGraphics();
-        Path path = Paths.get(".\\src\\vyki\\game\\image\\Background1.png");
+        Path path = Paths.get(".\\src\\vyki\\game\\image\\Background0.png");
         Image background = Toolkit.getDefaultToolkit().getImage(String.valueOf(path));
 
         g.setColor(Color.black);
@@ -109,7 +109,6 @@ public class Game extends Canvas implements Runnable {
         g.setColor(Color.gray);
         g.drawString("player_X="+GlobalVariables.player1_X+" player_Y= "+ GlobalVariables.player1_Y,50,720);
         g.drawString("homeLocation_X= "+GlobalVariables.homeLocation_X+" homeLocation_Y= "+ GlobalVariables.homeLocation_Y,50,700);
-
         g.translate(-GlobalVariables.player1_X+GlobalVariables.WIDTH/2,-GlobalVariables.player1_Y+GlobalVariables.HEIGHT/2);
 
         //shots

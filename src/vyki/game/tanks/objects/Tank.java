@@ -79,7 +79,8 @@ public class Tank  {
            TankY=coord[1];
            result = Math.sqrt(Math.pow((TankX-snX),2) +  Math.pow((TankY-snY),2)) < radius;   
            if (result){
-           it.remove();
+               pr.enemyTankAI();
+           //it.remove();
            }
        }
     return result;
