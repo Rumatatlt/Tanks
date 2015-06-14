@@ -75,6 +75,7 @@ public class Game extends Canvas implements Runnable {
                 shots = new ArrayList<>();
                 tanks = new ArrayList<>();
                 shards = new ArrayList<>();
+                enemyTanks = new ArrayList<>();
                     tanks.add(new Tank());
                     //tanks.add(new Tank());
                     Player_1 = tanks.get(0);
@@ -125,10 +126,10 @@ public class Game extends Canvas implements Runnable {
         for (Tank tank : tanks) {
             tank.getSprite().draw(g);
         }
-/*
+
         for (EnemyTank enemyTank : enemyTanks) {
             enemyTank.getSprite().draw(g);
-        }*/
+        }
         //System.out.println("total shards= "+shards.size());
         g.dispose();
         bs.show();

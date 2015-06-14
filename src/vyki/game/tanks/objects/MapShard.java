@@ -47,7 +47,7 @@ public class MapShard{
 }
 
 
-    public static boolean findShard(ArrayList<MapShard> shards, int X, int Y){
+    private static boolean findShard(ArrayList<MapShard> shards, int X, int Y){
         boolean val = false;
         for ( MapShard shard : shards){
             if (shard.X == (X + GlobalVariables.homeLocation_X) && shard.Y == (Y + GlobalVariables.homeLocation_Y)){
