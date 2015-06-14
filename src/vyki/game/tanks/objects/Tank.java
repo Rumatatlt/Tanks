@@ -16,11 +16,6 @@ import vyki.game.tanks.Sprite;
 import vyki.game.tanks.objects.Shots.PlayerShot;
 import javax.imageio.ImageIO;
 
-/**
- *
- * @author vyki0513
- */
-
 
 public class Tank  {
 

@@ -22,7 +22,7 @@ public class EnemyTank{
     //private static Image background = Toolkit.getDefaultToolkit().getImage(String.valueOf(path));
 
     public EnemyTank() {
-        this.sprite = getSprite("tankUP.png");
+        this.sprite = getSprite("tankDown.png");
         this.X = GlobalVariables.homeLocation_X + 400;
         this.Y = GlobalVariables.homeLocation_Y + 400;
     }
@@ -31,7 +31,7 @@ public class EnemyTank{
         this.X -=speed;
         //GlobalVariables.mapX=GlobalVariables.mapX+speed;
         getSprite().x=this.X;
-        getSprite().setImage(getImage("tankLeft.png"));
+        //getSprite().setImage(getImage("D:\\Game2D\\Tanks\\build\\classes\\tankLeft.png"));
         lastCourse = "left";
     }
 
@@ -46,8 +46,12 @@ public class EnemyTank{
     public Sprite getSprite() {
         return sprite;
     }
+    public void setSprite(Sprite sprite) {
+        this.sprite = sprite;
+    }
+
     public Sprite getSprite(String path) {
-        Sprite sprite = new Sprite(getImage(path), X, Y);
+        Sprite sprite = new Sprite(getImage(path), GlobalVariables.respawn_X, GlobalVariables.prespawn_Y);
         return sprite;
     }
     public Image getImage(String path) {
