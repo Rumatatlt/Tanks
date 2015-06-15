@@ -11,6 +11,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
+import static java.lang.Thread.sleep;
+
 
 public class EnemyTank{
     private Sprite sprite;
@@ -41,7 +43,14 @@ public class EnemyTank{
         lastCourse = "left";
     }
 
-    public static void enemyTankAI(){
+    public void enemyTankAI(){
+        try {
+            synchronized (this) {
+                wait(350);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         System.out.println("1111");
     }
 

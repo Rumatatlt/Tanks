@@ -22,7 +22,7 @@ public class Tank  {
 
     private Sprite sprite;
     public int HP = 100;
-    public int speed = 20;
+    public int speed = 10;
     public int damage = 20;
     private String lastCourse="up";
 
@@ -80,7 +80,10 @@ public class Tank  {
            result = Math.sqrt(Math.pow((TankX-snX),2) +  Math.pow((TankY-snY),2)) < radius;   
            if (result){
                pr.getSprite("boom.png");
-               pr.enemyTankAI();
+
+               //pr.enemyTankAI();
+               //pr.getSprite("tankDown.png");
+               //pr.getSprite("tankUp.png");
            //it.remove();
 
            }

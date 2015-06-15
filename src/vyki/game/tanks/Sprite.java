@@ -44,6 +44,7 @@ public class Sprite {
     public void setCoordinates(int x, int y) {
         this.x = x;
         this.y = y;
+
     }
     
     public int[] getCoordinates() {
