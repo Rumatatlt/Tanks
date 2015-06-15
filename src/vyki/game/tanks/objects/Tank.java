@@ -35,29 +35,39 @@ public class Tank  {
         GlobalVariables.player1_X -=speed;
         //GlobalVariables.mapX=GlobalVariables.mapX+speed;
         getSprite().x=GlobalVariables.player1_X;
-        getSprite().setImage(getImage("tankLeft.png"));
-        lastCourse = "left";
+        if (!"left".equals(lastCourse)){
+            getSprite().setImage(getImage("tankLeft.png"));
+            lastCourse = "left";
+        }
     }
     public void moveRight(){
         GlobalVariables.player1_X +=speed;
         //GlobalVariables.mapX=GlobalVariables.mapX-speed;
         getSprite().x=GlobalVariables.player1_X;
-        getSprite().setImage(getImage("tankRight.png"));
-        lastCourse = "right";
+        if (!"right".equals(lastCourse)){
+            getSprite().setImage(getImage("tankRight.png"));
+            lastCourse = "right";
+        }
     }
     public void moveDown(){
         GlobalVariables.player1_Y +=speed;
         //GlobalVariables.mapY=GlobalVariables.mapY-speed;
         getSprite().y=GlobalVariables.player1_Y;
-        getSprite().setImage(getImage("tankDown.png"));
-        lastCourse = "down";
+        if (!"down".equals(lastCourse)){
+            getSprite().setImage(getImage("tankDown.png"));
+            lastCourse = "down";
+        }
+
     }
     public void moveUp(){
         GlobalVariables.player1_Y -=speed;
         //GlobalVariables.mapY=GlobalVariables.mapY+speed;
         getSprite().y=GlobalVariables.player1_Y;
-        getSprite().setImage(getImage("tankUp.png"));
-        lastCourse = "up";
+        if (!"up".equals(lastCourse)){
+            getSprite().setImage(getImage("tankUp.png"));
+            lastCourse = "up";
+        }
+
     }
     public void shoot(ArrayList<PlayerShot> shots){
         shots.add(new PlayerShot(lastCourse,GlobalVariables.player1_X,GlobalVariables.player1_Y));
@@ -79,11 +89,8 @@ public class Tank  {
            TankY=coord[1];
            result = Math.sqrt(Math.pow((TankX-snX),2) +  Math.pow((TankY-snY),2)) < radius;   
            if (result){
-               pr.getSprite("boom.png");
-
+               pr.alive = false;
                //pr.enemyTankAI();
-               //pr.getSprite("tankDown.png");
-               //pr.getSprite("tankUp.png");
            //it.remove();
 
            }
