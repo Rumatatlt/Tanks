@@ -72,17 +72,19 @@ public class Tank  {
         int coord[] = new int[2];
         radius = 15;
 
-       while(it.hasNext()){
+        while(it.hasNext()){
            EnemyTank pr = (EnemyTank) it.next();
            coord = pr.getSprite().getCoordinates();
            TankX=coord[0];
            TankY=coord[1];
            result = Math.sqrt(Math.pow((TankX-snX),2) +  Math.pow((TankY-snY),2)) < radius;   
            if (result){
+               pr.getSprite("boom.png");
                pr.enemyTankAI();
            //it.remove();
+
            }
-       }
+        }
     return result;
     }
 
@@ -95,7 +97,7 @@ public class Tank  {
     }
 
     public Sprite getSprite(String path) {
-        Sprite sprite = new Sprite(getImage(path), GlobalVariables.respawn_X, GlobalVariables.prespawn_Y);
+        Sprite sprite = new Sprite(getImage(path), GlobalVariables.player1_X, GlobalVariables.player1_Y);
         return sprite;
     }
     public Image getImage(String path) {
