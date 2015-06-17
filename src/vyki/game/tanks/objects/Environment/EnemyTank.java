@@ -23,7 +23,7 @@ public class EnemyTank{
     private Sprite sprite;
     public int speed = 3;
     private String lastCourse="up";
-    private static int numCourse=1;
+    private int numCourse=1;
     public int X = 0;
     public int Y = 0;
     public int respownX;
@@ -49,38 +49,43 @@ public class EnemyTank{
 
 
     public static void enemyTankAI(){
-        count++;
-        Random ran = new Random();
-        if (count%100==0){
-            numCourse = ran.nextInt(4)+1;
-            System.out.println("rand= " + numCourse);
-        }
-            for (EnemyTank tank : enemyTanks){
-                if (!tank.alive){tank.enemyTankDestroyed();} else {
-                    //tank.moveRight();
-                    //tank.shoot(GlobalVariables.shots);
 
-                    switch (numCourse) {
-                        case 1: tank.moveRight();
-                            break;
-                        case 2:  tank.moveLeft();
-                            break;
-                        case 3:  tank.moveDown();
-                            break;
-                        case 4:  tank.moveUp();
-                            break;
-                    }
+        Random ran = new Random();
+        if (count%200==0){
+            for (EnemyTank tank : enemyTanks){
+                tank.shoot();
+            }
+        }
+        if (count%100==0){
+            for (EnemyTank tank : enemyTanks){
+                tank.numCourse = ran.nextInt(4)+1;
+            }
+        }
+        for (EnemyTank tank : enemyTanks){
+            if (!tank.alive){tank.enemyTankDestroyed();} else {
+                //tank.moveRight();
+                //tank.shoot(GlobalVariables.shots);
+
+                switch (tank.numCourse) {
+                    case 1: tank.moveRight();
+                        break;
+                    case 2:  tank.moveLeft();
+                        break;
+                    case 3:  tank.moveDown();
+                        break;
+                    case 4:  tank.moveUp();
+                        break;
                 }
             }
-
-
-
+        }
+        count++;
     }
 
 
 
     public static void enemyTankConstructor(){
         if (!findShard(enemyTanks,0,0)){
+            enemyTanks.add(new EnemyTank());
             enemyTanks.add(new EnemyTank());
         }
     }
@@ -126,8 +131,8 @@ public class EnemyTank{
             lastCourse = "up";
         }
     }
-    public void shoot(ArrayList<PlayerShot> shots){
-        shots.add(new PlayerShot(lastCourse,GlobalVariables.player1_X,GlobalVariables.player1_Y));
+    public void shoot(){
+        GlobalVariables.shots.add(new PlayerShot(lastCourse, X, Y));
     }
 
 
