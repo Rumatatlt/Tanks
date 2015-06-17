@@ -1,7 +1,10 @@
 package vyki.game.tanks.objects.Environment;
 
+import vyki.game.tanks.Game;
 import vyki.game.tanks.GlobalVariables;
 import vyki.game.tanks.Sprite;
+import vyki.game.tanks.objects.Shots.PlayerShot;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -15,6 +18,7 @@ import static java.lang.Thread.sleep;
 
 
 public class EnemyTank{
+    private static ArrayList<EnemyTank> enemyTanks = GlobalVariables.enemyTanks;
     private Sprite sprite;
     public int speed = 1;
     private String lastCourse="up";
@@ -41,17 +45,25 @@ public class EnemyTank{
     }
 
 
-    public static void enemyTankAI(ArrayList<EnemyTank> enemyTanks){
+    public static void enemyTankAI(){
         for (EnemyTank tank : enemyTanks){
             if (!tank.alive){tank.enemyTankDestroyed();} else {
-                tank.moveLeft();
+                tank.moveRight();
+                //tank.shoot(GlobalVariables.shots);
             }
+        }
+    }
+
+
+
+    public static void enemyTankConstructor(){
+        if (!findShard(enemyTanks,0,0)){
+            enemyTanks.add(new EnemyTank());
         }
     }
 
     public void enemyTankDestroyed(){
         this.X -=0;
-        //GlobalVariables.mapX=GlobalVariables.mapX+speed;
         getSprite().x=this.X;
         if (!"Destroyed".equals(lastCourse)){
             getSprite().setImage(getImage("boom.png"));
@@ -61,23 +73,40 @@ public class EnemyTank{
 
     public void moveLeft(){
         this.X -=speed;
-        //GlobalVariables.mapX=GlobalVariables.mapX+speed;
         getSprite().x=this.X;
         if (!"left".equals(lastCourse)){
             getSprite().setImage(getImage("tankLeft.png"));
             lastCourse = "left";
         }
-
-        //lastCourse = "left";
     }
-
-
-    public static void enemyTankConstructor(ArrayList<EnemyTank> enemyTanks){
-        if (!findShard(enemyTanks,0,0)){
-            enemyTanks.add(new EnemyTank());
+    public void moveRight(){
+        this.X +=speed;
+        getSprite().x=this.X;
+        if (!"right".equals(lastCourse)){
+            getSprite().setImage(getImage("tankRight.png"));
+            lastCourse = "right";
         }
-
     }
+    public void moveDown(){
+        this.Y +=speed;
+        getSprite().y=this.Y;
+        if (!"down".equals(lastCourse)){
+            getSprite().setImage(getImage("tankDown.png"));
+            lastCourse = "down";
+        }
+    }
+    public void moveUp(){
+        this.Y -=speed;
+        getSprite().y=this.Y;
+        if (!"up".equals(lastCourse)){
+            getSprite().setImage(getImage("tankUp.png"));
+            lastCourse = "up";
+        }
+    }
+    public void shoot(ArrayList<PlayerShot> shots){
+        shots.add(new PlayerShot(lastCourse,GlobalVariables.player1_X,GlobalVariables.player1_Y));
+    }
+
 
     private static boolean findShard(ArrayList<EnemyTank> enemyTanks, int X, int Y){
         boolean val = false;

@@ -2,15 +2,11 @@ package vyki.game.tanks;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import vyki.game.tanks.objects.Environment.EnemyTank;
@@ -18,30 +14,23 @@ import vyki.game.tanks.objects.MapShard;
 import vyki.game.tanks.objects.Tank;
 import vyki.game.tanks.objects.Shots.PlayerShot;
 
-import static vyki.game.tanks.objects.Environment.EnemyTank.enemyTankAI;
-import static vyki.game.tanks.objects.Environment.EnemyTank.enemyTankConstructor;
 
 
 public class Game extends Canvas implements Runnable {
 	private static final long serialVersionUID = 1L;
 	private boolean running= true;
 	public static String NAME = "TANKS";
-        private ArrayList<Tank> tanks;
-        private ArrayList<PlayerShot> shots;
-        private ArrayList<MapShard> shards;
-        private ArrayList<EnemyTank> enemyTanks;
-        //private Map<String, MapShard> shards;
-        //public static int mapX=0;
-        //public static int mapY=0;
+        private ArrayList<Tank> tanks = GlobalVariables.tanks;
+        private ArrayList<PlayerShot> shots = GlobalVariables.shots;
+        private ArrayList <MapShard> shards = GlobalVariables.shards;
+        private ArrayList<EnemyTank> enemyTanks = GlobalVariables.enemyTanks;
         public Tank Player_1;
 
         public static void main(String[] args) {
 		Game game = new Game();
-		//game.setPreferredSize(new Dimension(GlobalVariables.WIDTH, GlobalVariables.HEIGHT));
 		JFrame frame = new JFrame(Game.NAME);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLayout(new BorderLayout());
-        //frame.setContentPane(new JLabel(new ImageIcon("D:\\other\\Game2D\\build\\classes\\Background.png")));
         frame.setPreferredSize(new Dimension(GlobalVariables.WIDTH, GlobalVariables.HEIGHT));
 		frame.add(game, BorderLayout.CENTER);
 		frame.pack();
@@ -73,13 +62,8 @@ public class Game extends Canvas implements Runnable {
 
 	public void init() {
 		addKeyListener(new KeyInputHandler(this));
-                shots = new ArrayList<>();
-                tanks = new ArrayList<>();
-                shards = new ArrayList<>();
-                enemyTanks = new ArrayList<>();
-                    tanks.add(new Tank());
-                    //tanks.add(new Tank());
-                    Player_1 = tanks.get(0);
+        tanks.add(new Tank());
+        Player_1 = tanks.get(0);
 
 	}
 
@@ -100,9 +84,9 @@ public class Game extends Canvas implements Runnable {
 
         //map
         g.drawImage(background, GlobalVariables.mapX-GlobalVariables.player1_X, GlobalVariables.mapY-GlobalVariables.player1_Y, null);
-        MapShard.mapConstructor(shards);
-        enemyTankConstructor(enemyTanks);
-        enemyTankAI(enemyTanks);
+        MapShard.mapConstructor();
+        EnemyTank.enemyTankConstructor();
+        EnemyTank.enemyTankAI();
 
          for (MapShard shard : shards){
             shard.draw(g);

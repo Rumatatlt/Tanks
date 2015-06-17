@@ -14,6 +14,7 @@ public class MapShard{
     private static int collSize = 1;
     private static Path path = Paths.get(".\\src\\vyki\\game\\image\\Background0.png");
     private static Image background = Toolkit.getDefaultToolkit().getImage(String.valueOf(path));
+    private static ArrayList <MapShard> shards = GlobalVariables.shards;
 
     public MapShard(int X, int Y){
         this.X= this.X+X + GlobalVariables.homeLocation_X;
@@ -28,7 +29,7 @@ public class MapShard{
     }
 
 
-    public static void mapConstructor(ArrayList<MapShard> shards){
+    public static void mapConstructor(){
         int charX;
         int charY;
         if (GlobalVariables.player1_X>=0){charX = 1;} else {charX = -1;}
