@@ -20,8 +20,8 @@ public class EnemyTank{
     private String lastCourse="up";
     public int X = 0;
     public int Y = 0;
-    public int respownX = 0;
-    public int respownY = 0;
+    public int respownX;
+    public int respownY;
     private static int collSize = 1;
     public boolean alive = true;
     //private static Path path = Paths.get(".\\build\\classes\\tankUP.png");
@@ -29,12 +29,15 @@ public class EnemyTank{
 
     public EnemyTank() {
         this.sprite = getSprite("tankDown.png");
-        this.respownX = GlobalVariables.homeLocation_X + 0;
-        this.respownY = GlobalVariables.homeLocation_Y + 0;
+        this.respownX = GlobalVariables.homeLocation_X;
+        this.respownY = GlobalVariables.homeLocation_Y;
+        this.X = this.respownX;
+        this.Y = this.respownY;
         getSprite().x=this.respownX;
         getSprite().y=this.respownY;
         collSize++;
         System.out.println("new EnemyTank, total= " + collSize);
+        System.out.println("coord: X= " + X + " Y= " + Y);
     }
 
 
@@ -60,7 +63,6 @@ public class EnemyTank{
         this.X -=speed;
         //GlobalVariables.mapX=GlobalVariables.mapX+speed;
         getSprite().x=this.X;
-        getSprite().setImage(getImage("tankLeft.png"));
         if (!"left".equals(lastCourse)){
             getSprite().setImage(getImage("tankLeft.png"));
             lastCourse = "left";
@@ -98,7 +100,7 @@ public class EnemyTank{
     }
 
     public Sprite getSprite(String path) {
-        sprite = new Sprite(getImage(path), X, Y);
+        sprite = new Sprite(getImage(path), respownX, respownY);
         return sprite;
     }
     public Image getImage(String path) {
