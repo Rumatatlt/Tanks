@@ -9,18 +9,14 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import vyki.game.tanks.GlobalVariables;
+
 import vyki.game.tanks.Sprite;
 import vyki.game.tanks.objects.Drawable;
 import vyki.game.tanks.objects.Environment.EnemyTank;
-import vyki.game.tanks.objects.Tank;
+import vyki.game.tanks.objects.Environment.Tank;
 
 import javax.imageio.ImageIO;
 
-/**
- *
- * @author vyki0513
- */
 public class PlayerShot implements Drawable {
     
     private Sprite sprite;

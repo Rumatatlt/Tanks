@@ -11,7 +11,8 @@ import javax.swing.*;
 
 import vyki.game.tanks.objects.Environment.EnemyTank;
 import vyki.game.tanks.objects.MapShard;
-import vyki.game.tanks.objects.Tank;
+import vyki.game.tanks.objects.Shots.EnemyShot;
+import vyki.game.tanks.objects.Environment.Tank;
 import vyki.game.tanks.objects.Shots.PlayerShot;
 
 
@@ -21,7 +22,8 @@ public class Game extends Canvas implements Runnable {
 	private boolean running= true;
 	public static String NAME = "TANKS";
         private ArrayList<Tank> tanks = GlobalVariables.tanks;
-        private ArrayList<PlayerShot> shots = GlobalVariables.shots;
+        private ArrayList<PlayerShot> shots = GlobalVariables.playerShots;
+        private ArrayList<EnemyShot> enemyShots = GlobalVariables.enemyShots;
         private ArrayList <MapShard> shards = GlobalVariables.shards;
         private ArrayList<EnemyTank> enemyTanks = GlobalVariables.enemyTanks;
         public Tank Player_1;
@@ -98,7 +100,7 @@ public class Game extends Canvas implements Runnable {
         g.drawString("homeLocation_X= "+GlobalVariables.homeLocation_X+" homeLocation_Y= "+ GlobalVariables.homeLocation_Y,50,700);
         g.translate(-GlobalVariables.player1_X+GlobalVariables.WIDTH/2,-GlobalVariables.player1_Y+GlobalVariables.HEIGHT/2);
 
-        //shots
+        //playerShots
         ListIterator itSH = shots.listIterator();
         while (itSH.hasNext()){
             PlayerShot shot = (PlayerShot) itSH.next();
@@ -108,13 +110,25 @@ public class Game extends Canvas implements Runnable {
                 itSH.remove();
             }
         }
+        //enemyShots
+        ListIterator iteSH = enemyShots.listIterator();
+        while (iteSH.hasNext()){
+            EnemyShot enemyShot = (EnemyShot) iteSH.next();
+            enemyShot.getSprite().draw(g);
+            if (enemyShot.Hit((ArrayList) tanks)) {
+                System.out.println("Попал!");
+                iteSH.remove();
+            }
+        }
         //Tanks
         for (Tank tank : tanks) {
             tank.getSprite().draw(g);
         }
 
         for (EnemyTank enemyTank : enemyTanks) {
+            enemyTank.Test();
             enemyTank.getSprite().draw(g);
+           // enemyTank.getSprite().draw(g);
         }
         //System.out.println("total shards= "+shards.size());
         g.dispose();
@@ -134,32 +148,7 @@ public class Game extends Canvas implements Runnable {
         if (GlobalVariables.spaceReleased) {
                 GlobalVariables.spaceReleased = false;
                 Player_1.shoot((ArrayList) shots);
-
-            //System.out.println("MapCoord: "+GlobalVariables.mapX+" "+GlobalVariables.mapY);
         }
-       /* //Player 2
-        if (GlobalVariables.APressed == true) {
-            tanks.get(1).getSprite().x-=Player_1.speed;
-            tanks.get(1).getSprite().setImage(game.getImage("tankLeft.png"));
-            lastCourse = "left";
-        } else if (GlobalVariables.DPressed == true) {
-            tanks.get(1).getSprite().x+=Player_1.speed;
-            tanks.get(1).getSprite().setImage(game.getImage("tankRight.png"));
-            lastCourse = "right";
-        } else if (GlobalVariables.SPressed == true) {
-            tanks.get(1).getSprite().y+=Player_1.speed;
-            tanks.get(1).getSprite().setImage(game.getImage("tankDown.png"));
-            lastCourse = "down";
-        } else if (GlobalVariables.WPressed == true) {
-            tanks.get(1).getSprite().y-=Player_1.speed;
-            tanks.get(1).getSprite().setImage(game.getImage("tankUp.png"));
-            lastCourse = "up";
-        }
-        if (GlobalVariables.OReleased == true) {
-            GlobalVariables.OReleased = false;
-            shots.add(new PlayerShot(getSpriteShot("shotUP.png"), lastCourse));
-        }
-        */
 	}
 
 }

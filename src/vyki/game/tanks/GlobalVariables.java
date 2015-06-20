@@ -6,11 +6,11 @@ package vyki.game.tanks;
 
 import vyki.game.tanks.objects.Environment.EnemyTank;
 import vyki.game.tanks.objects.MapShard;
-import vyki.game.tanks.objects.Tank;
+import vyki.game.tanks.objects.Shots.EnemyShot;
+import vyki.game.tanks.objects.Environment.Tank;
 import vyki.game.tanks.objects.Shots.PlayerShot;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
 /**
  *
@@ -52,7 +52,8 @@ public class GlobalVariables {
     public static int mapX = -100;
     public static int mapY = -100;
     public static ArrayList<Tank> tanks = new ArrayList<>();
-    public static ArrayList<PlayerShot> shots = new ArrayList<>();
+    public static ArrayList<PlayerShot> playerShots = new ArrayList<>();
+    public static ArrayList<EnemyShot> enemyShots = new ArrayList<>();
     public static ArrayList<MapShard> shards = new ArrayList<>();
     public static ArrayList<EnemyTank> enemyTanks = new ArrayList<>();
 
