@@ -11,9 +11,10 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.ListIterator;
 
 
-public class EnemyShot implements Drawable {
+public class EnemyShot extends AbstractShot implements Drawable {
 
 
     private Sprite sprite;
@@ -44,21 +45,6 @@ public class EnemyShot implements Drawable {
 
     public void setSprite(Sprite sprite) {
         this.sprite = sprite;
-    }
-
-    public boolean Hit(ArrayList<AbstractTank> players){
-        boolean strike = false;
-        if (Tank.inHitbox(sprite.x - 10, sprite.y - 12, players)) {strike = true;}
-        switch (this.course){
-            case "left":  sprite.x-=speed; break;
-            case "right": sprite.x+=speed; break;
-            case "down":  sprite.y+=speed; break;
-            case "up":    sprite.y-=speed; break;
-        }
-        return strike;
-    }
-    public void moveUp(){
-
     }
 
 

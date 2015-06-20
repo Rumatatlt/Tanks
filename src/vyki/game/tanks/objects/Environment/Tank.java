@@ -66,26 +66,6 @@ public class Tank  extends AbstractTank{
         System.out.println("Map coord: "+GlobalVariables.mapX +" "+GlobalVariables.mapY);
     }
 
-    public static boolean inHitbox(int snX, int snY, ArrayList<AbstractTank> players){
-        int TankX,TankY, radius;
-        boolean result = false;
-        ListIterator it = players.listIterator();
-        int coord[] = new int[2];
-        radius = 15;
-
-        while(it.hasNext()){
-            AbstractTank pr = (AbstractTank) it.next();
-           coord = pr.getSprite().getCoordinates();
-           TankX=coord[0];
-           TankY=coord[1];
-           result = Math.sqrt(Math.pow((TankX-snX),2) +  Math.pow((TankY-snY),2)) < radius;   
-           if (result){
-               System.out.println("result");
-               pr.setAlive(false);
-           }
-        }
-    return result;
-    }
 
     public boolean isAlive() {
         return alive;

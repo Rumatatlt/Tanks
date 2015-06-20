@@ -12,12 +12,13 @@ import java.util.ArrayList;
 
 import vyki.game.tanks.Sprite;
 import vyki.game.tanks.objects.Drawable;
+import vyki.game.tanks.objects.Environment.AbstractTank;
 import vyki.game.tanks.objects.Environment.EnemyTank;
 import vyki.game.tanks.objects.Environment.Tank;
 
 import javax.imageio.ImageIO;
 
-public class PlayerShot implements Drawable {
+public class PlayerShot extends AbstractShot implements Drawable {
     
     private Sprite sprite;
     public int speed = 9;
@@ -48,22 +49,9 @@ public class PlayerShot implements Drawable {
     public void setSprite(Sprite sprite) {
         this.sprite = sprite;
     }
-    
-    public boolean Hit(ArrayList<EnemyTank> players){
-        boolean strike = false;  
-        if (Tank.inHitbox(sprite.x-10, sprite.y-12, players)) {strike = true;}
-        switch (this.course){
-            case "left":  sprite.x-=speed; break;
-            case "right": sprite.x+=speed; break;
-            case "down":  sprite.y+=speed; break;
-            case "up":    sprite.y-=speed; break;
-        }
-        return strike;
-    }
     public void moveUp(){
 
     }
-
 
     public Sprite getSpriteShot(String path) {
         Sprite sprite = new Sprite(getImage(path), X, Y);
