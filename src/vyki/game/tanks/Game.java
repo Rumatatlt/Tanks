@@ -126,7 +126,6 @@ public class Game extends Canvas implements Runnable {
         }
 
         for (EnemyTank enemyTank : enemyTanks) {
-            enemyTank.Test();
             enemyTank.getSprite().draw(g);
            // enemyTank.getSprite().draw(g);
         }

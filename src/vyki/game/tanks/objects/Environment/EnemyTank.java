@@ -159,11 +159,18 @@ public class EnemyTank extends AbstractTank{
         }
         return val;
     }
+    public boolean isAlive() {
+        return alive;
+    }
 
-  public Sprite getSprite() {
+    public void setAlive(boolean alive) {
+        this.alive = alive;
+    }
+
+    public Sprite getSprite() {
         return sprite;
     }
-   public void setSprite(Sprite sprite) {
+    public void setSprite(Sprite sprite) {
         this.sprite = sprite;
     }
 /*

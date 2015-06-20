@@ -18,12 +18,15 @@ public abstract class AbstractTank {
     private int Y = 0;
     private int speed = 3;
     private String lastCourse="up";
+    private boolean alive = true;
 
     public void Test(){
       System.out.println("Test");
     }
 
-
+    public Sprite getSprite() {
+        return sprite;
+    }
     public Sprite getSprite(String path,int X, int Y) {
         Sprite sprite = new Sprite(getImage(path), X, Y);
         return sprite;
@@ -38,5 +41,13 @@ public abstract class AbstractTank {
         }
         Image image = Toolkit.getDefaultToolkit().createImage(sourceImage.getSource());
         return image;
+    }
+
+    public boolean isAlive() {
+        return alive;
+    }
+
+    public void setAlive(boolean alive) {
+        this.alive = alive;
     }
 }

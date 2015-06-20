@@ -19,6 +19,7 @@ public class Tank  extends AbstractTank{
     public int speed = 10;
     public int damage = 20;
     private String lastCourse="up";
+    public boolean alive = true;
 
     public Tank() {
         this.sprite = getSprite("tankUP.png", GlobalVariables.player1_X, GlobalVariables.player1_Y);
@@ -65,7 +66,7 @@ public class Tank  extends AbstractTank{
         System.out.println("Map coord: "+GlobalVariables.mapX +" "+GlobalVariables.mapY);
     }
 
-    public static boolean inHitbox(int snX, int snY, ArrayList<EnemyTank> players){
+    public static boolean inHitbox(int snX, int snY, ArrayList<AbstractTank> players){
         int TankX,TankY, radius;
         boolean result = false;
         ListIterator it = players.listIterator();
@@ -73,21 +74,26 @@ public class Tank  extends AbstractTank{
         radius = 15;
 
         while(it.hasNext()){
-           EnemyTank pr = (EnemyTank) it.next();
+            AbstractTank pr = (AbstractTank) it.next();
            coord = pr.getSprite().getCoordinates();
            TankX=coord[0];
            TankY=coord[1];
            result = Math.sqrt(Math.pow((TankX-snX),2) +  Math.pow((TankY-snY),2)) < radius;   
            if (result){
-               pr.alive = false;
-               //pr.enemyTankAI();
-           //it.remove();
-
+               System.out.println("result");
+               pr.setAlive(false);
            }
         }
     return result;
     }
 
+    public boolean isAlive() {
+        return alive;
+    }
+
+    public void setAlive(boolean alive) {
+        this.alive = alive;
+    }
 
     public Sprite getSprite() {
         return sprite;
@@ -95,22 +101,5 @@ public class Tank  extends AbstractTank{
     public void setSprite(Sprite sprite) {
         this.sprite = sprite;
     }
-/*
-    public Sprite getSprite(String path) {
-        Sprite sprite = new Sprite(getImage(path), GlobalVariables.player1_X, GlobalVariables.player1_Y);
-        return sprite;
-    }
-    public Image getImage(String path) {
-        BufferedImage sourceImage = null;
-        try {
-            URL url = this.getClass().getClassLoader().getResource(path);
-            sourceImage = ImageIO.read(url);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Image image = Toolkit.getDefaultToolkit().createImage(sourceImage.getSource());
-        return image;
-    }*/
-
 
 }

@@ -4,6 +4,7 @@
  */
 package vyki.game.tanks;
 
+import vyki.game.tanks.objects.Environment.AbstractTank;
 import vyki.game.tanks.objects.Environment.EnemyTank;
 import vyki.game.tanks.objects.MapShard;
 import vyki.game.tanks.objects.Shots.EnemyShot;
