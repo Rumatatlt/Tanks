@@ -4,19 +4,8 @@
  */
 package vyki.game.tanks.objects.Shots;
 
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.net.URL;
-import java.util.ArrayList;
-
 import vyki.game.tanks.Sprite;
 import vyki.game.tanks.objects.Drawable;
-import vyki.game.tanks.objects.Environment.AbstractTank;
-import vyki.game.tanks.objects.Environment.EnemyTank;
-import vyki.game.tanks.objects.Environment.Tank;
-
-import javax.imageio.ImageIO;
 
 public class PlayerShot extends AbstractShot implements Drawable {
     
@@ -29,8 +18,8 @@ public class PlayerShot extends AbstractShot implements Drawable {
 
     public PlayerShot (String lastCourse, int X, int Y) {
         this.course = lastCourse;
-        this.X=X;
-        this.Y=Y;
+        this.setX(X);
+        this.setY(Y);
         this.sprite = getSpriteShot("shotUP.png");
     }
 
@@ -53,26 +42,23 @@ public class PlayerShot extends AbstractShot implements Drawable {
 
     }
 
-    public Sprite getSpriteShot(String path) {
-        Sprite sprite = new Sprite(getImage(path), X, Y);
-        switch (course){
-            case "left": sprite = new Sprite(getImage(path), X-11, Y+11);  break;
-            case "right": sprite = new Sprite(getImage(path), X+28, Y+11); break;
-            case "down": sprite = new Sprite(getImage(path), X+11, Y+28);  break;
-            case "up": sprite = new Sprite(getImage(path), X+11, Y-11);    break;
-        }
-        return sprite;
-    }
-    public Image getImage(String path) {
-        BufferedImage sourceImage = null;
-        try {
-            URL url = this.getClass().getClassLoader().getResource(path);
-            sourceImage = ImageIO.read(url);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Image image = Toolkit.getDefaultToolkit().createImage(sourceImage.getSource());
-        return image;
+    @Override
+    public int getX() {
+        return X;
     }
 
+    @Override
+    public void setX(int x) {
+        X = x;
+    }
+
+    @Override
+    public int getY() {
+        return Y;
+    }
+
+    @Override
+    public void setY(int y) {
+        Y = y;
+    }
 }

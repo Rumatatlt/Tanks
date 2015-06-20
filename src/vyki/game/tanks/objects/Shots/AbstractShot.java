@@ -3,6 +3,11 @@ package vyki.game.tanks.objects.Shots;
 import vyki.game.tanks.Sprite;
 import vyki.game.tanks.objects.Environment.AbstractTank;
 
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.ListIterator;
 
@@ -13,7 +18,8 @@ public abstract class AbstractShot {
     private Sprite sprite;
     private int speed = 9;
     private String course;
-
+    private int X;
+    private int Y;
 
     public boolean Hit(ArrayList<AbstractTank> players){
         boolean strike = false;
@@ -70,5 +76,42 @@ public abstract class AbstractShot {
 
     public void setCourse(String course) {
         this.course = course;
+    }
+    public Sprite getSpriteShot(String path) {
+        Sprite sprite = new Sprite(getImage(path), getX(), getY());
+        switch (getCourse()){
+            case "left": sprite = new Sprite(getImage(path), getX() -11, getY() +11);  break;
+            case "right": sprite = new Sprite(getImage(path), getX() +28, getY() +11); break;
+            case "down": sprite = new Sprite(getImage(path), getX() +11, getY() +28);  break;
+            case "up": sprite = new Sprite(getImage(path), getX() +11, getY() -11);    break;
+        }
+        return sprite;
+    }
+    public Image getImage(String path) {
+        BufferedImage sourceImage = null;
+        try {
+            URL url = this.getClass().getClassLoader().getResource(path);
+            sourceImage = ImageIO.read(url);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Image image = Toolkit.getDefaultToolkit().createImage(sourceImage.getSource());
+        return image;
+    }
+
+    public int getX() {
+        return X;
+    }
+
+    public void setX(int x) {
+        X = x;
+    }
+
+    public int getY() {
+        return Y;
+    }
+
+    public void setY(int y) {
+        Y = y;
     }
 }
