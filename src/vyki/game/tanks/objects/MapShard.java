@@ -11,16 +11,28 @@ import java.util.*;
 public class MapShard{
     private int X = 0;
     private int Y = 0;
-    private static int collSize = 1;
+    private int id;
     private static Path path = Paths.get(".\\src\\vyki\\game\\image\\Background0.png");
     private static Image background = Toolkit.getDefaultToolkit().getImage(String.valueOf(path));
     private static ArrayList <MapShard> shards = GlobalVariables.shards;
 
     public MapShard(int X, int Y){
+
         this.X= this.X+X + GlobalVariables.homeLocation_X;
         this.Y= this.Y+Y + GlobalVariables.homeLocation_Y;
-        collSize++;
-        System.out.println("new shard, total= " + collSize);
+        this.id = shards.size() + 1;
+        System.out.println("new shard, total= " + shards.size());
+        System.out.println("shardId= " + id);
+        if (id>8){
+            ListIterator itSH = shards.listIterator();
+            while (itSH.hasNext()){
+                MapShard shard = (MapShard) itSH.next();
+                if (shard.id < this.id) {
+                    System.out.println("Shard deleted");
+                    itSH.remove();
+                }
+            }
+        }
     }
 
     public void draw(Graphics g) {
@@ -45,6 +57,7 @@ public class MapShard{
         if (!findShard(shards,-1000,-1000)) {shards.add(new MapShard(-1000, -1000));}
         if (!findShard(shards,-1000,0)) {shards.add(new MapShard(-1000, 0));}
         if (!findShard(shards,-1000,1000)) {shards.add(new MapShard(-1000, 1000));}
+
 }
 
 

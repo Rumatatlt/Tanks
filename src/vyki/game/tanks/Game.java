@@ -52,7 +52,7 @@ public class Game extends Canvas implements Runnable {
         while (running) {
             try {
                 synchronized (this) {
-                    wait(20);
+                    wait(5);
                 }
             } catch (InterruptedException ex) {
                 Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);

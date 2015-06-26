@@ -17,7 +17,7 @@ public class Tank  extends AbstractTank{
 
     private Sprite sprite;
     public int HP = 100;
-    public int speed = 10;
+    public int speed = 5;
     public int damage = 20;
     private LastCourse lastCourse = LastCourse.up;
     public boolean alive = true;

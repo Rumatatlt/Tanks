@@ -13,7 +13,7 @@ import java.util.Random;
 public class EnemyTank extends AbstractTank{
     private static ArrayList<EnemyTank> enemyTanks = GlobalVariables.enemyTanks;
     private Sprite sprite;
-    private int speed = 3;
+    private int speed = 1;
     private LastCourse lastCourse;
     private int numCourse=1;
     private int X = 0;
@@ -97,7 +97,7 @@ public class EnemyTank extends AbstractTank{
             TankY=coord[1];
             result = Math.sqrt(Math.pow((TankX-GlobalVariables.player1_X),2) +  Math.pow((TankY-GlobalVariables.player1_Y),2)) < radius;
             if (result){
-                System.out.println("target finded");
+                //System.out.println("target finded");
                 return true;
             }
         }
