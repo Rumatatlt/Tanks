@@ -2,6 +2,7 @@ package vyki.game.tanks.objects.Environment;
 
 import vyki.game.tanks.GlobalVariables;
 import vyki.game.tanks.Sprite;
+import vyki.game.tanks.objects.Enums.LastCourse;
 import vyki.game.tanks.objects.Shots.EnemyShot;
 
 import javax.imageio.ImageIO;
@@ -18,48 +19,47 @@ public abstract class AbstractTank {
     private int X = 0;
     private int Y = 0;
     private int speed = 3;
-    private String lastCourse="up";
+    private LastCourse lastCourse;
     private boolean alive = true;
 
     public void Test(){
       System.out.println("Test");
     }
 
-/*    public void moveLeft(){
-        setX(getX() - speed);
+   public void moveLeft(){
+        setX(getX() - getSpeed());
         getSprite().x= getX();
         if (!"left".equals(getLastCourse())){
             getSprite().setImage(getImage("tankLeft.png"));
-            setLastCourse("left");
+            setLastCourse(LastCourse.left);
         }
     }
     public void moveRight(){
-        setX(getX() + speed);
+        setX(getX() + getSpeed());
         getSprite().x= getX();
         if (!"right".equals(getLastCourse())){
             getSprite().setImage(getImage("tankRight.png"));
-            setLastCourse("right");
+            setLastCourse(LastCourse.right);
         }
     }
     public void moveDown(){
-        setY(getY() + speed);
+        setY(getY() + getSpeed());
         getSprite().y= getY();
         if (!"down".equals(getLastCourse())){
             getSprite().setImage(getImage("tankDown.png"));
-            setLastCourse("down");
+            setLastCourse(LastCourse.down);
         }
     }
+
     public void moveUp(){
-        setY(getY() - speed);
+        setY(getY() - getSpeed());
         getSprite().y= getY();
         if (!"up".equals(getLastCourse())){
             getSprite().setImage(getImage("tankUp.png"));
-            setLastCourse("up");
+            setLastCourse(LastCourse.up);
         }
     }
-    public void shoot(){
-        GlobalVariables.enemyShots.add(new EnemyShot(getLastCourse(), getX(), getY()));
-    }*/
+
 
     public Sprite getSprite() {
         return sprite;
@@ -104,11 +104,19 @@ public abstract class AbstractTank {
         Y = y;
     }
 
-    public String getLastCourse() {
+    public LastCourse getLastCourse() {
         return lastCourse;
     }
 
-    public void setLastCourse(String lastCourse) {
+    public void setLastCourse(LastCourse lastCourse) {
         this.lastCourse = lastCourse;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
     }
 }

@@ -1,6 +1,7 @@
 package vyki.game.tanks.objects.Shots;
 
 import vyki.game.tanks.Sprite;
+import vyki.game.tanks.objects.Enums.LastCourse;
 import vyki.game.tanks.objects.Environment.AbstractTank;
 
 import javax.imageio.ImageIO;
@@ -17,19 +18,23 @@ import java.util.ListIterator;
 public abstract class AbstractShot {
     private Sprite sprite;
     private int speed = 9;
-    private String course;
+    private LastCourse course;
     private int X;
     private int Y;
 
     public boolean Hit(ArrayList<AbstractTank> players){
         boolean strike = false;
         if (inHitbox(getSprite().x - 10, getSprite().y - 12, players)) {strike = true;}
-        switch (this.getCourse()){
+        if (LastCourse.left == getCourse()) {getSprite().x-= getSpeed();}
+        else if (LastCourse.right == getCourse()){getSprite().x+= getSpeed();}
+        else if (LastCourse.down == getCourse()){getSprite().y+= getSpeed();}
+        else if (LastCourse.up == getCourse()){getSprite().y-= getSpeed();}
+        /*switch (this.getCourse()){
             case "left":  getSprite().x-= getSpeed(); break;
             case "right": getSprite().x+= getSpeed(); break;
             case "down":  getSprite().y+= getSpeed(); break;
             case "up":    getSprite().y-= getSpeed(); break;
-        }
+        }*/
         return strike;
     }
 
@@ -70,21 +75,28 @@ public abstract class AbstractShot {
         this.speed = speed;
     }
 
-    public String getCourse() {
+    public LastCourse getCourse() {
         return course;
     }
 
-    public void setCourse(String course) {
+    public void setCourse(LastCourse course) {
         this.course = course;
     }
+
     public Sprite getSpriteShot(String path) {
         Sprite sprite = new Sprite(getImage(path), getX(), getY());
-        switch (getCourse()){
-            case "left": sprite = new Sprite(getImage(path), getX() -11, getY() +11);  break;
+        if (LastCourse.left == getCourse()) {sprite = new Sprite(getImage(path), getX() -11, getY() +11);}
+        else if (LastCourse.right == getCourse()){sprite = new Sprite(getImage(path), getX() +28, getY() +11);}
+        else if (LastCourse.down == getCourse()){sprite = new Sprite(getImage(path), getX() +11, getY() +28);}
+        else if (LastCourse.up == getCourse()){sprite = new Sprite(getImage(path), getX() +11, getY() -11);}
+
+        /*switch (getCourse()){
+            case LastCourse.left: sprite = new Sprite(getImage(path), getX() -11, getY() +11);  break;
             case "right": sprite = new Sprite(getImage(path), getX() +28, getY() +11); break;
             case "down": sprite = new Sprite(getImage(path), getX() +11, getY() +28);  break;
             case "up": sprite = new Sprite(getImage(path), getX() +11, getY() -11);    break;
-        }
+        }*/
+
         return sprite;
     }
     public Image getImage(String path) {

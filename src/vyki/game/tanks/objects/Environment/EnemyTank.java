@@ -2,6 +2,7 @@ package vyki.game.tanks.objects.Environment;
 
 import vyki.game.tanks.GlobalVariables;
 import vyki.game.tanks.Sprite;
+import vyki.game.tanks.objects.Enums.LastCourse;
 import vyki.game.tanks.objects.Shots.EnemyShot;
 import java.util.ArrayList;
 import java.util.ListIterator;
@@ -13,7 +14,7 @@ public class EnemyTank extends AbstractTank{
     private static ArrayList<EnemyTank> enemyTanks = GlobalVariables.enemyTanks;
     private Sprite sprite;
     private int speed = 3;
-    private String lastCourse="up";
+    private LastCourse lastCourse;
     private int numCourse=1;
     private int X = 0;
     private int Y = 0;
@@ -22,8 +23,6 @@ public class EnemyTank extends AbstractTank{
     private static int collSize = 1;
     public boolean alive = true;
     private static int count = 0;
-    //private static Path path = Paths.get(".\\build\\classes\\tankUP.png");
-    //private static Image background = Toolkit.getDefaultToolkit().getImage(String.valueOf(path));
 
     public EnemyTank() {
         this.sprite = getSprite("tankDown.png", respownX, respownY);
@@ -81,6 +80,10 @@ public class EnemyTank extends AbstractTank{
 
     }
 
+    public void shoot(){
+        GlobalVariables.enemyShots.add(new EnemyShot(getLastCourse(), getX(), getY()));
+    }
+
     public static boolean findTargets(){
         int TankX,TankY, radius;
         boolean result;
@@ -105,46 +108,10 @@ public class EnemyTank extends AbstractTank{
     public void enemyTankDestroyed(){
         this.X -=0;
         getSprite().x=this.X;
-        if (!"Destroyed".equals(lastCourse)){
+        if (!LastCourse.Destroyed.equals(lastCourse)){
             getSprite().setImage(getImage("boom.png"));
-            lastCourse = "Destroyed";
+            lastCourse = LastCourse.Destroyed;
         }
-    }
-
-    public void moveLeft(){
-        this.X -=speed;
-        getSprite().x=this.X;
-        if (!"left".equals(lastCourse)){
-            getSprite().setImage(getImage("tankLeft.png"));
-            lastCourse = "left";
-        }
-    }
-    public void moveRight(){
-        this.X +=speed;
-        getSprite().x=this.X;
-        if (!"right".equals(lastCourse)){
-            getSprite().setImage(getImage("tankRight.png"));
-            lastCourse = "right";
-        }
-    }
-    public void moveDown(){
-        this.Y +=speed;
-        getSprite().y=this.Y;
-        if (!"down".equals(lastCourse)){
-            getSprite().setImage(getImage("tankDown.png"));
-            lastCourse = "down";
-        }
-    }
-    public void moveUp(){
-        this.Y -=speed;
-        getSprite().y=this.Y;
-        if (!"up".equals(lastCourse)){
-            getSprite().setImage(getImage("tankUp.png"));
-            lastCourse = "up";
-        }
-    }
-    public void shoot(){
-        GlobalVariables.enemyShots.add(new EnemyShot(lastCourse, X, Y));
     }
 
     private static boolean createCheck(ArrayList<EnemyTank> enemyTanks, int X, int Y){
@@ -173,21 +140,16 @@ public class EnemyTank extends AbstractTank{
     public void setSprite(Sprite sprite) {
         this.sprite = sprite;
     }
-/*
-    public Sprite getSprite(String path) {
-        sprite = new Sprite(getImage(path), respownX, respownY);
-        return sprite;
+    @Override
+    public LastCourse getLastCourse() {
+        return lastCourse;
     }
-    public Image getImage(String path) {
-        BufferedImage sourceImage = null;
-        try {
-            URL url = this.getClass().getClassLoader().getResource(path);
-            sourceImage = ImageIO.read(url);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Image image = Toolkit.getDefaultToolkit().createImage(sourceImage.getSource());
-        return image;
+    @Override
+    public void setLastCourse(LastCourse lastCourse) {
+        this.lastCourse = lastCourse;
     }
-    */
+    @Override
+    public int getSpeed() {
+        return speed;
+    }
 }
