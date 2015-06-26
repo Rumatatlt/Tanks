@@ -34,7 +34,6 @@ public class EnemyTank extends AbstractTank{
         getSprite().y=this.respownY;
         collSize++;
         System.out.println("new EnemyTank, total= " + collSize);
-
     }
 
 
@@ -51,7 +50,7 @@ public class EnemyTank extends AbstractTank{
                 //tank.moveRight();
                 //tank.shoot(GlobalVariables.shots);
             if (findTargets()){
-                tank.shoot();
+                //tank.shoot();
             }
                 switch (tank.numCourse) {
                     case 1: tank.moveRight();
@@ -107,7 +106,7 @@ public class EnemyTank extends AbstractTank{
 
     public void enemyTankDestroyed(){
         this.X -=0;
-        getSprite().x=this.X;
+        getSprite().x=getX();
         if (!LastCourse.Destroyed.equals(lastCourse)){
             getSprite().setImage(getImage("boom.png"));
             lastCourse = LastCourse.Destroyed;
