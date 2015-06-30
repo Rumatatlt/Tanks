@@ -21,6 +21,7 @@ public class EnemyTank extends AbstractTank{
     private int respownX;
     private int respownY;
     private static int collSize = 1;
+    private static int tankLimit = 2;
     public boolean alive = true;
     private static int count = 0;
 
@@ -73,6 +74,20 @@ public class EnemyTank extends AbstractTank{
         if (!createCheck(enemyTanks, 0, 0)){
             enemyTanks.add(new EnemyTank());
             enemyTanks.add(new EnemyTank());
+        }
+        if (enemyTanks.size()>tankLimit){
+            int distanceX;
+            int distanceY;
+            ListIterator iterator = enemyTanks.listIterator();
+            while (iterator.hasNext()){
+                EnemyTank tank = (EnemyTank) iterator.next();
+                distanceX = Math.abs(GlobalVariables.player1_X) - Math.abs(tank.getX());
+                distanceY = Math.abs(GlobalVariables.player1_Y) - Math.abs(tank.getY());
+                if (distanceX>500 || distanceY>500){
+                    iterator.remove();
+                }
+            }
+
         }
     }
     public static void patrul(){
