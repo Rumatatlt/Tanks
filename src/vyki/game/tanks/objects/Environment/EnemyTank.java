@@ -87,7 +87,6 @@ public class EnemyTank extends AbstractTank{
                     iterator.remove();
                 }
             }
-
         }
     }
     public static void patrul(){

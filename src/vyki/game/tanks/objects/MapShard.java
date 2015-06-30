@@ -11,6 +11,7 @@ import java.util.*;
 public class MapShard{
     private int X = 0;
     private int Y = 0;
+    private static int shardsLimit = 8;
     private int id;
     private static Path path = Paths.get(".\\src\\vyki\\game\\image\\Background0.png");
     private static Image background = Toolkit.getDefaultToolkit().getImage(String.valueOf(path));
@@ -57,6 +58,19 @@ public class MapShard{
         if (!findShard(shards,-1000,-1000)) {shards.add(new MapShard(-1000, -1000));}
         if (!findShard(shards,-1000,0)) {shards.add(new MapShard(-1000, 0));}
         if (!findShard(shards,-1000,1000)) {shards.add(new MapShard(-1000, 1000));}
+        if (shards.size()>shardsLimit){
+            int distanceX;
+            int distanceY;
+            ListIterator iterator = shards.listIterator();
+            while (iterator.hasNext()){
+                MapShard shard = (MapShard) iterator.next();
+                distanceX = Math.abs(GlobalVariables.player1_X) - Math.abs(shard.getX());
+                distanceY = Math.abs(GlobalVariables.player1_Y) - Math.abs(shard.getY());
+                if (distanceX>1000 || distanceY>1000){
+                    iterator.remove();
+                }
+            }
+        }
 
 }
 
