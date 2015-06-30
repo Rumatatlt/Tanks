@@ -25,15 +25,15 @@ public class EnemyTank extends AbstractTank{
     private static int count = 0;
 
     public EnemyTank() {
-        this.sprite = getSprite("tankDown.png", respownX, respownY);
         this.respownX = GlobalVariables.homeLocation_X;
         this.respownY = GlobalVariables.homeLocation_Y;
-        this.X = this.respownX;
-        this.Y = this.respownY;
-        getSprite().x=this.respownX;
-        getSprite().y=this.respownY;
+        this.sprite = getSprite("tankDown.png", respownX, respownY);
+        this.setX(this.respownX);
+        this.setY(this.respownY);
+        getSprite().x=this.getX();
+        getSprite().y=this.getY();
         collSize++;
-        System.out.println("new EnemyTank, total= " + collSize);
+        //System.out.println("new EnemyTank, total= " + collSize);
     }
 
 
@@ -150,5 +150,21 @@ public class EnemyTank extends AbstractTank{
     @Override
     public int getSpeed() {
         return speed;
+    }
+    @Override
+    public int getX() {
+        return X;
+    }
+    @Override
+    public void setX(int x) {
+        X = x;
+    }
+    @Override
+    public int getY() {
+        return Y;
+    }
+    @Override
+    public void setY(int y) {
+        Y = y;
     }
 }

@@ -18,26 +18,26 @@ public class MapShard{
 
     public MapShard(int X, int Y){
 
-        this.X= this.X+X + GlobalVariables.homeLocation_X;
-        this.Y= this.Y+Y + GlobalVariables.homeLocation_Y;
+        this.setX(this.getX() +X + GlobalVariables.homeLocation_X);
+        this.setY(this.getY() +Y + GlobalVariables.homeLocation_Y);
         this.id = shards.size() + 1;
         System.out.println("new shard, total= " + shards.size());
         System.out.println("shardId= " + id);
-        if (id>8){
+/*        if (id>10){
             ListIterator itSH = shards.listIterator();
             while (itSH.hasNext()){
                 MapShard shard = (MapShard) itSH.next();
-                if (shard.id < this.id) {
+                if (shard.id < 10) {
                     System.out.println("Shard deleted");
                     itSH.remove();
                 }
             }
-        }
+        }*/
     }
 
     public void draw(Graphics g) {
         g.setColor(Color.red);
-        g.drawImage(background, X-GlobalVariables.player1_X-100,Y-GlobalVariables.player1_Y-100, null);
+        g.drawImage(background, getX() -GlobalVariables.player1_X-100, getY() -GlobalVariables.player1_Y-100, null);
     }
 
 
@@ -60,11 +60,10 @@ public class MapShard{
 
 }
 
-
     private static boolean findShard(ArrayList<MapShard> shards, int X, int Y){
         boolean val = false;
         for ( MapShard shard : shards){
-            if (shard.X == (X + GlobalVariables.homeLocation_X) && shard.Y == (Y + GlobalVariables.homeLocation_Y)){
+            if (shard.getX() == (X + GlobalVariables.homeLocation_X) && shard.getY() == (Y + GlobalVariables.homeLocation_Y)){
                 val = true;
                 break;
             } else {
@@ -72,5 +71,21 @@ public class MapShard{
             }
         }
         return val;
+    }
+
+    public int getX() {
+        return X;
+    }
+
+    public void setX(int x) {
+        X = x;
+    }
+
+    public int getY() {
+        return Y;
+    }
+
+    public void setY(int y) {
+        Y = y;
     }
 }

@@ -91,6 +91,9 @@ public class Game extends Canvas implements Runnable {
         EnemyTank.enemyTankAI();
 
          for (MapShard shard : shards){
+           /* if (shard.getX()==GlobalVariables.homeLocation_X && shard.getY()==GlobalVariables.homeLocation_Y){
+                shard.draw(g);
+            }*/
             shard.draw(g);
         }
 
