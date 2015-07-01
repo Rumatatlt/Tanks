@@ -18,7 +18,7 @@ public abstract class AbstractTank {
     private Sprite sprite;
     private int X = 0;
     private int Y = 0;
-    private int speed = 3;
+    private int speed = 1;
     private LastCourse lastCourse;
     private boolean alive = true;
 

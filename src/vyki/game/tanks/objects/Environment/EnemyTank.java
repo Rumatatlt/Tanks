@@ -13,7 +13,7 @@ import java.util.Random;
 public class EnemyTank extends AbstractTank{
     private static ArrayList<EnemyTank> enemyTanks = GlobalVariables.enemyTanks;
     private Sprite sprite;
-    private int speed = 2;
+    private int speed = 1;
     private LastCourse lastCourse;
     private int numCourse=1;
     private int X = 0;
@@ -103,21 +103,19 @@ public class EnemyTank extends AbstractTank{
     private static void tracking(EnemyTank tank){
         if (Math.abs(tank.X)-Math.abs(GlobalVariables.player1_X)>Math.abs(tank.Y)-Math.abs(GlobalVariables.player1_Y)){
             if (tank.X!=GlobalVariables.player1_X){
-                if (tank.X>GlobalVariables.player1_X){tank.moveLeft();} else {tank.moveRight();}
+                if (tank.X>GlobalVariables.player1_X && tank.X!=GlobalVariables.player1_X){tank.moveLeft();} else {tank.moveRight();}
             } else/* if (tank.Y!=GlobalVariables.player1_Y)*/{
-                //tank.shoot();
-                if (tank.Y>GlobalVariables.player1_Y){tank.moveUp();} else {tank.moveDown();}
+                tank.shoot();
+                if (tank.Y>GlobalVariables.player1_Y && tank.Y!=GlobalVariables.player1_Y){tank.moveUp();} else {tank.moveDown();}
             }
         } else {
             if (tank.Y!=GlobalVariables.player1_Y){
-                if (tank.Y>GlobalVariables.player1_Y){tank.moveUp();} else {tank.moveDown();}
+                if (tank.Y>GlobalVariables.player1_Y && tank.Y!=GlobalVariables.player1_Y){tank.moveUp();} else {tank.moveDown();}
             } else /*if (tank.X!=GlobalVariables.player1_X)*/{
-                //tank.shoot();
-                if (tank.X>GlobalVariables.player1_X){tank.moveLeft();} else {tank.moveRight();}
+                tank.shoot();
+                if (tank.X>GlobalVariables.player1_X && tank.X!=GlobalVariables.player1_X){tank.moveLeft();} else {tank.moveRight();}
             }
         }
-
-
 
     }
 
