@@ -23,6 +23,7 @@ public class EnemyTank extends AbstractTank{
     private static int collSize = 1;
     private static int tankLimit = 2;
     public boolean alive = true;
+    public boolean display = true;
     private static int count = 0;
 
     public EnemyTank() {
@@ -48,20 +49,22 @@ public class EnemyTank extends AbstractTank{
         }
         for (EnemyTank tank : enemyTanks){
             if (!tank.alive){tank.enemyTankDestroyed();} else {
-                //tank.moveRight();
-                //tank.shoot(GlobalVariables.shots);
-            if (findTargets()){
-                //tank.shoot();
-            }
-                switch (tank.numCourse) {
-                    case 1: tank.moveRight();
-                        break;
-                    case 2:  tank.moveLeft();
-                        break;
-                    case 3:  tank.moveDown();
-                        break;
-                    case 4:  tank.moveUp();
-                        break;
+                    //tank.moveRight();
+                    //tank.shoot(GlobalVariables.shots);
+                if (findTargets()){
+                    tracking(tank);
+                    //tank.shoot();
+                } else {
+                        switch (tank.numCourse) {
+                            case 1: tank.moveRight();
+                                break;
+                            case 2:  tank.moveLeft();
+                                break;
+                            case 3:  tank.moveDown();
+                                break;
+                            case 4:  tank.moveUp();
+                                break;
+                        }
                 }
             }
         }
@@ -85,6 +88,7 @@ public class EnemyTank extends AbstractTank{
                 distanceY = Math.abs(GlobalVariables.player1_Y) - Math.abs(tank.getY());
                 if (distanceX>500 || distanceY>500){
                     iterator.remove();
+                    //tank.display = false;
                 }
             }
         }
@@ -97,12 +101,33 @@ public class EnemyTank extends AbstractTank{
         GlobalVariables.enemyShots.add(new EnemyShot(getLastCourse(), getX(), getY()));
     }
 
+    private static void tracking(EnemyTank tank){
+
+
+        if (Math.abs(tank.X)-Math.abs(GlobalVariables.player1_X)>Math.abs(tank.Y)-Math.abs(GlobalVariables.player1_Y)){
+            if (tank.X!=GlobalVariables.player1_X){
+                if (tank.X>GlobalVariables.player1_X){tank.moveLeft();} else {tank.moveRight();}
+            } else if (tank.Y!=GlobalVariables.player1_Y){
+                if (tank.Y>GlobalVariables.player1_Y){tank.moveUp();} else {tank.moveDown();}
+            }
+        } else {
+            if (tank.Y!=GlobalVariables.player1_Y){
+                if (tank.Y>GlobalVariables.player1_Y){tank.moveUp();} else {tank.moveDown();}
+            } else if (tank.X!=GlobalVariables.player1_X){
+                if (tank.X>GlobalVariables.player1_X){tank.moveLeft();} else {tank.moveRight();}
+            }
+        }
+
+
+
+    }
+
     public static boolean findTargets(){
         int TankX,TankY, radius;
         boolean result;
         ListIterator it = enemyTanks.listIterator();
         int coord[];
-        radius = 150;
+        radius = 300;
 
         while(it.hasNext()){
             EnemyTank pr = (EnemyTank) it.next();
