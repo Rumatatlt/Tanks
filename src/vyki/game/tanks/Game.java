@@ -52,6 +52,7 @@ public class Game extends Canvas implements Runnable {
         while (running) {
             try {
                 synchronized (this) {
+                    GlobalVariables.lifeCycleTacts += 10;
                     wait(10);
                 }
             } catch (InterruptedException ex) {

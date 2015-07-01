@@ -13,7 +13,7 @@ import java.util.Random;
 public class EnemyTank extends AbstractTank{
     private static ArrayList<EnemyTank> enemyTanks = GlobalVariables.enemyTanks;
     private Sprite sprite;
-    private int speed = 1;
+    private int speed = 2;
     private LastCourse lastCourse;
     private int numCourse=1;
     private int X = 0;
@@ -42,19 +42,15 @@ public class EnemyTank extends AbstractTank{
     public static void enemyTankAI(){
         Random ran = new Random();
 
-        if (count%100==0){
-            for (EnemyTank tank : enemyTanks){
-                tank.numCourse = ran.nextInt(4)+1;
-            }
-        }
         for (EnemyTank tank : enemyTanks){
             if (!tank.alive){tank.enemyTankDestroyed();} else {
-                    //tank.moveRight();
-                    //tank.shoot(GlobalVariables.shots);
                 if (findTargets()){
                     tracking(tank);
                     //tank.shoot();
                 } else {
+                    if (count%100==0) {
+                        tank.numCourse = ran.nextInt(4) + 1;
+                    }
                         switch (tank.numCourse) {
                             case 1: tank.moveRight();
                                 break;
@@ -65,9 +61,9 @@ public class EnemyTank extends AbstractTank{
                             case 4:  tank.moveUp();
                                 break;
                         }
+                    }
                 }
             }
-        }
         count++;
     }
 
@@ -98,22 +94,25 @@ public class EnemyTank extends AbstractTank{
     }
 
     public void shoot(){
-        GlobalVariables.enemyShots.add(new EnemyShot(getLastCourse(), getX(), getY()));
+        int shootTact = 500;
+        if (GlobalVariables.lifeCycleTacts % shootTact==0){
+            GlobalVariables.enemyShots.add(new EnemyShot(getLastCourse(), getX(), getY()));
+        }
     }
 
     private static void tracking(EnemyTank tank){
-
-
         if (Math.abs(tank.X)-Math.abs(GlobalVariables.player1_X)>Math.abs(tank.Y)-Math.abs(GlobalVariables.player1_Y)){
             if (tank.X!=GlobalVariables.player1_X){
                 if (tank.X>GlobalVariables.player1_X){tank.moveLeft();} else {tank.moveRight();}
-            } else if (tank.Y!=GlobalVariables.player1_Y){
+            } else/* if (tank.Y!=GlobalVariables.player1_Y)*/{
+                //tank.shoot();
                 if (tank.Y>GlobalVariables.player1_Y){tank.moveUp();} else {tank.moveDown();}
             }
         } else {
             if (tank.Y!=GlobalVariables.player1_Y){
                 if (tank.Y>GlobalVariables.player1_Y){tank.moveUp();} else {tank.moveDown();}
-            } else if (tank.X!=GlobalVariables.player1_X){
+            } else /*if (tank.X!=GlobalVariables.player1_X)*/{
+                //tank.shoot();
                 if (tank.X>GlobalVariables.player1_X){tank.moveLeft();} else {tank.moveRight();}
             }
         }

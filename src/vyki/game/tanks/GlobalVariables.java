@@ -42,6 +42,7 @@ public class GlobalVariables {
     public static Tank hero;
     
     public static PlayerShot shot;
+    public static int lifeCycleTacts = 0;
     public static int player1_X = 0;
     public static int player1_Y = 0;
     public static int respawn_X = 0;
