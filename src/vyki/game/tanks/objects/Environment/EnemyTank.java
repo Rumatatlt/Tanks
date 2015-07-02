@@ -83,7 +83,7 @@ public class EnemyTank extends AbstractTank{
                 distanceX = Math.abs(GlobalVariables.player1_X) - Math.abs(tank.getX());
                 distanceY = Math.abs(GlobalVariables.player1_Y) - Math.abs(tank.getY());
                 if (distanceX>500 || distanceY>500){
-                    iterator.remove();
+                        iterator.remove();
                     //tank.display = false;
                 }
             }
