@@ -22,8 +22,6 @@ public class MapShard{
         this.setX(this.getX() +X + GlobalVariables.homeLocation_X);
         this.setY(this.getY() +Y + GlobalVariables.homeLocation_Y);
         this.id = shards.size() + 1;
-        System.out.println("new shard, total= " + shards.size());
-        System.out.println("shardId= " + id);
 /*        if (id>10){
             ListIterator itSH = shards.listIterator();
             while (itSH.hasNext()){

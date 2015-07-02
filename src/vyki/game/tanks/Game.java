@@ -100,9 +100,11 @@ public class Game extends Canvas implements Runnable {
 
         g.setFont(new Font("default", Font.BOLD, 16));
         g.setColor(Color.gray);
-        g.drawString("player_X="+GlobalVariables.player1_X+" player_Y= "+ GlobalVariables.player1_Y,50,720);
+        g.drawString("player_X=" + GlobalVariables.player1_X + " player_Y= " + GlobalVariables.player1_Y, 50, 720);
         g.drawString("homeLocation_X= "+GlobalVariables.homeLocation_X+" homeLocation_Y= "+ GlobalVariables.homeLocation_Y,50,700);
-        g.translate(-GlobalVariables.player1_X+GlobalVariables.WIDTH/2,-GlobalVariables.player1_Y+GlobalVariables.HEIGHT/2);
+        g.drawString("Map shards= "+shards.size(),600,700);
+        g.drawString("Enemy units= "+enemyTanks.size(),600,720);
+        g.translate(-GlobalVariables.player1_X + GlobalVariables.WIDTH / 2, -GlobalVariables.player1_Y + GlobalVariables.HEIGHT / 2);
 
         //playerShots
         ListIterator itSH = shots.listIterator();
@@ -110,7 +112,7 @@ public class Game extends Canvas implements Runnable {
             PlayerShot shot = (PlayerShot) itSH.next();
             shot.getSprite().draw(g);
             if (shot.Hit((ArrayList) enemyTanks)) {
-                System.out.println("Попал!");
+                //System.out.println("Попал!");
                 itSH.remove();
             }
         }
@@ -120,7 +122,7 @@ public class Game extends Canvas implements Runnable {
             EnemyShot enemyShot = (EnemyShot) iteSH.next();
             enemyShot.getSprite().draw(g);
             if (enemyShot.Hit((ArrayList) tanks)) {
-                System.out.println("Попал!");
+                //System.out.println("Попал!");
                 iteSH.remove();
             }
         }
