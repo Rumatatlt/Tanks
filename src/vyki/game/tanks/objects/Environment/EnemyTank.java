@@ -105,18 +105,18 @@ public class EnemyTank extends AbstractTank{
             if (tank.X!=GlobalVariables.player1_X){
                 if (tank.X>GlobalVariables.player1_X && tank.X!=GlobalVariables.player1_X){tank.moveLeft();} else {tank.moveRight();}
             } else/* if (tank.Y!=GlobalVariables.player1_Y)*/{
-                tank.shoot();
+                //tank.shoot();
+
                 if (tank.Y>GlobalVariables.player1_Y && tank.Y!=GlobalVariables.player1_Y){tank.moveUp();} else {tank.moveDown();}
             }
         } else {
             if (tank.Y!=GlobalVariables.player1_Y){
                 if (tank.Y>GlobalVariables.player1_Y && tank.Y!=GlobalVariables.player1_Y){tank.moveUp();} else {tank.moveDown();}
             } else /*if (tank.X!=GlobalVariables.player1_X)*/{
-                tank.shoot();
+                //tank.shoot();
                 if (tank.X>GlobalVariables.player1_X && tank.X!=GlobalVariables.player1_X){tank.moveLeft();} else {tank.moveRight();}
             }
         }
-
     }
 
     public static boolean findTargets(){
