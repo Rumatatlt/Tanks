@@ -101,6 +101,9 @@ public class EnemyTank extends AbstractTank{
     }
 
     private static void tracking(EnemyTank tank){
+        int distanceByX= Math.abs(tank.X-GlobalVariables.player1_X);
+        int distanceByY= Math.abs(tank.Y-GlobalVariables.player1_Y);
+
         if (Math.abs(tank.X)-Math.abs(GlobalVariables.player1_X)>Math.abs(tank.Y)-Math.abs(GlobalVariables.player1_Y)){
             if (tank.X!=GlobalVariables.player1_X){
                 if (tank.X>GlobalVariables.player1_X && tank.X!=GlobalVariables.player1_X){tank.moveLeft();} else {tank.moveRight();}
