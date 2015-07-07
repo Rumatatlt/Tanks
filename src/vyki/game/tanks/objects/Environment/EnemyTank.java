@@ -25,6 +25,7 @@ public class EnemyTank extends AbstractTank{
     public boolean alive = true;
     public boolean display = true;
     private static int count = 0;
+    private int deathAnimationTime = 500;
 
     public EnemyTank() {
         this.respownX = GlobalVariables.homeLocation_X;
@@ -89,9 +90,8 @@ public class EnemyTank extends AbstractTank{
             }
         }
     }
-    public static void patrul(){
 
-    }
+
 
     public void shoot(){
         int shootTact = 500;
@@ -152,7 +152,7 @@ public class EnemyTank extends AbstractTank{
         this.X -=0;
         getSprite().x=getX();
         if (!LastCourse.Destroyed.equals(lastCourse)){
-            getSprite().setImage(getImage("boom.png"));
+            getSprite().setImage(getImage("blast.gif"));
             lastCourse = LastCourse.Destroyed;
         }
     }
@@ -210,5 +210,13 @@ public class EnemyTank extends AbstractTank{
     @Override
     public void setY(int y) {
         Y = y;
+    }
+
+    public  int getDeathAnimationTime() {
+        return this.deathAnimationTime;
+    }
+
+    public void setDeathAnimationTime(int deathAnimationTime) {
+        this.deathAnimationTime = deathAnimationTime;
     }
 }

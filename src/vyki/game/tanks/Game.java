@@ -9,6 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
 
+import vyki.game.tanks.objects.Enums.LastCourse;
 import vyki.game.tanks.objects.Environment.EnemyTank;
 import vyki.game.tanks.objects.MapShard;
 import vyki.game.tanks.objects.Shots.EnemyShot;
@@ -131,10 +132,23 @@ public class Game extends Canvas implements Runnable {
             tank.getSprite().draw(g);
         }
 
-        for (EnemyTank enemyTank : enemyTanks) {
+        ListIterator enTank = enemyTanks.listIterator();
+        while (enTank.hasNext()){
+            EnemyTank enemyTank = (EnemyTank) enTank.next();
+            if (enemyTank.getLastCourse()== LastCourse.Destroyed) {
+                enemyTank.setDeathAnimationTime(enemyTank.getDeathAnimationTime() - 10);
+                if (enemyTank.getDeathAnimationTime()<=0){
+                    enTank.remove();
+                }
+            }
             enemyTank.getSprite().draw(g);
-           // enemyTank.getSprite().draw(g);
+
+
+
         }
+        /*for (EnemyTank enemyTank : enemyTanks) {
+            enemyTank.getSprite().draw(g);
+        }*/
         //System.out.println("total shards= "+shards.size());
         g.dispose();
         bs.show();
