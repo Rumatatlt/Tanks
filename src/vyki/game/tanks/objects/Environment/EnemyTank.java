@@ -104,15 +104,20 @@ public class EnemyTank extends AbstractTank{
         int distanceByX= Math.abs(tank.X-GlobalVariables.player1_X);
         int distanceByY= Math.abs(tank.Y-GlobalVariables.player1_Y);
 
-        if (Math.abs(tank.X)-Math.abs(GlobalVariables.player1_X)>Math.abs(tank.Y)-Math.abs(GlobalVariables.player1_Y)){
+        if ((tank.X-GlobalVariables.player1_X) > (tank.Y-GlobalVariables.player1_Y) || Math.abs(tank.X)-Math.abs(GlobalVariables.player1_X)>Math.abs(tank.Y)-Math.abs(GlobalVariables.player1_Y)){
             if (tank.X!=GlobalVariables.player1_X){
                 if (tank.X>GlobalVariables.player1_X && tank.X!=GlobalVariables.player1_X){tank.moveLeft();} else {tank.moveRight();}
             } else/* if (tank.Y!=GlobalVariables.player1_Y)*/{
                 //tank.shoot();
-
                 if (tank.Y>GlobalVariables.player1_Y && tank.Y!=GlobalVariables.player1_Y){tank.moveUp();} else {tank.moveDown();}
             }
-        } else {
+        } else if (distanceByX==distanceByY){
+            if (tank.lastCourse==LastCourse.up){tank.moveUp();}
+            if (tank.lastCourse==LastCourse.down){tank.moveDown();}
+            if (tank.lastCourse==LastCourse.right){tank.moveRight();}
+            if (tank.lastCourse==LastCourse.left){tank.moveLeft();}
+            }
+        else {
             if (tank.Y!=GlobalVariables.player1_Y){
                 if (tank.Y>GlobalVariables.player1_Y && tank.Y!=GlobalVariables.player1_Y){tank.moveUp();} else {tank.moveDown();}
             } else /*if (tank.X!=GlobalVariables.player1_X)*/{
