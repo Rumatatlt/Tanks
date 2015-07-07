@@ -136,8 +136,10 @@ public class Game extends Canvas implements Runnable {
         while (enTank.hasNext()){
             EnemyTank enemyTank = (EnemyTank) enTank.next();
             if (enemyTank.getLastCourse()== LastCourse.Destroyed) {
-                enemyTank.setDeathAnimationTime(enemyTank.getDeathAnimationTime() - 10);
-                if (enemyTank.getDeathAnimationTime()<=0){
+                //TODO привязать к реальному времени
+                //System.out.println(enemyTank.deathAnimationTime);
+                enemyTank.deathAnimationTime = enemyTank.deathAnimationTime - 10;
+                if (enemyTank.deathAnimationTime <= 0){
                     enTank.remove();
                 }
             }

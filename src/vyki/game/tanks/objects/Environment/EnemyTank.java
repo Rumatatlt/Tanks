@@ -25,7 +25,7 @@ public class EnemyTank extends AbstractTank{
     public boolean alive = true;
     public boolean display = true;
     private static int count = 0;
-    private int deathAnimationTime = 500;
+    public int deathAnimationTime = 500;
 
     public EnemyTank() {
         this.respownX = GlobalVariables.homeLocation_X;
@@ -73,7 +73,7 @@ public class EnemyTank extends AbstractTank{
     public static void enemyTankConstructor(){
         if (!createCheck(enemyTanks, 0, 0)){
             enemyTanks.add(new EnemyTank());
-            enemyTanks.add(new EnemyTank());
+            //enemyTanks.add(new EnemyTank());
         }
         if (enemyTanks.size()>tankLimit){
             int distanceX;
