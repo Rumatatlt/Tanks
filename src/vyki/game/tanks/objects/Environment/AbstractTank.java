@@ -1,14 +1,10 @@
 package vyki.game.tanks.objects.Environment;
 
-import vyki.game.tanks.GlobalVariables;
+
 import vyki.game.tanks.Sprite;
 import vyki.game.tanks.objects.Enums.LastCourse;
-import vyki.game.tanks.objects.Shots.EnemyShot;
-
-import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
 import java.net.URL;
 
 /**
@@ -69,14 +65,9 @@ public abstract class AbstractTank {
         return sprite;
     }
     public Image getImage(String path) {
-        BufferedImage sourceImage = null;
-        try {
-            URL url = this.getClass().getClassLoader().getResource(path);
-            sourceImage = ImageIO.read(url);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Image image = Toolkit.getDefaultToolkit().createImage(sourceImage.getSource());
+        URL url = this.getClass().getClassLoader().getResource(path);
+        ImageIcon icon = new ImageIcon(url);
+        Image image = icon.getImage();
         return image;
     }
 
