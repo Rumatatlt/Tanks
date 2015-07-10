@@ -2,6 +2,7 @@ package vyki.game.tanks;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
+import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
@@ -138,12 +139,19 @@ public class Game extends Canvas implements Runnable {
             if (enemyTank.getLastCourse()== LastCourse.Destroyed) {
                 //TODO привязать к реальному времени
                 //System.out.println(enemyTank.deathAnimationTime);
+
+                URL url = this.getClass().getClassLoader().getResource("blast.gif");
+                ImageIcon icon = new ImageIcon(url);
+                Image image = icon.getImage();
+                image.setAccelerationPriority(1);
+                g.drawImage(image, enemyTank.getX()-150, enemyTank.getY()-300, null);
                 enemyTank.deathAnimationTime = enemyTank.deathAnimationTime - 10;
                 if (enemyTank.deathAnimationTime <= 0){
 
+                    //image.flush();
 
-                    enemyTank.getSprite().getImage().flush();
-                    enemyTank.getSprite().setImage(enemyTank.getImage("destroyedTank.png"));
+                    //enemyTank.getSprite().getImage().flush();
+                    //enemyTank.getSprite().setImage(enemyTank.getImage("destroyedTank.png"));
                     //enTank.remove();
                 }
             }
