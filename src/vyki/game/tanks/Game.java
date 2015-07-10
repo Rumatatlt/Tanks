@@ -143,8 +143,8 @@ public class Game extends Canvas implements Runnable {
 
 
                     enemyTank.getSprite().getImage().flush();
-                    enemyTank.getSprite().setImage(enemyTank.getImage("tankDown.png"));
-                    enTank.remove();
+                    enemyTank.getSprite().setImage(enemyTank.getImage("destroyedTank.png"));
+                    //enTank.remove();
                 }
             }
             enemyTank.getSprite().draw(g);
