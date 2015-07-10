@@ -140,6 +140,10 @@ public class Game extends Canvas implements Runnable {
                 //System.out.println(enemyTank.deathAnimationTime);
                 enemyTank.deathAnimationTime = enemyTank.deathAnimationTime - 10;
                 if (enemyTank.deathAnimationTime <= 0){
+
+
+                    enemyTank.getSprite().getImage().flush();
+                    enemyTank.getSprite().setImage(enemyTank.getImage("tankDown.png"));
                     enTank.remove();
                 }
             }
