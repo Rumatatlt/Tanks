@@ -136,24 +136,15 @@ public class Game extends Canvas implements Runnable {
         ListIterator enTank = enemyTanks.listIterator();
         while (enTank.hasNext()){
             EnemyTank enemyTank = (EnemyTank) enTank.next();
-            if (enemyTank.getLastCourse()== LastCourse.Destroyed) {
+            if (enemyTank.getLastCourse()== LastCourse.Destroyed && enemyTank.deathAnimationTime>=0) {
                 //TODO привязать к реальному времени
-                //System.out.println(enemyTank.deathAnimationTime);
-
                 URL url = this.getClass().getClassLoader().getResource("blast.gif");
                 ImageIcon icon = new ImageIcon(url);
                 Image image = icon.getImage();
                 image.setAccelerationPriority(1);
-                g.drawImage(image, enemyTank.getX()-150, enemyTank.getY()-300, null);
+
+                g.drawImage(image, enemyTank.getX()-160, enemyTank.getY()-330, null);
                 enemyTank.deathAnimationTime = enemyTank.deathAnimationTime - 10;
-                if (enemyTank.deathAnimationTime <= 0){
-
-                    //image.flush();
-
-                    //enemyTank.getSprite().getImage().flush();
-                    //enemyTank.getSprite().setImage(enemyTank.getImage("destroyedTank.png"));
-                    //enTank.remove();
-                }
             }
             enemyTank.getSprite().draw(g);
 

@@ -152,10 +152,10 @@ public class EnemyTank extends AbstractTank{
         this.X -=0;
         getSprite().x=getX();
         if (!LastCourse.Destroyed.equals(lastCourse)){
-            if (LastCourse.up.equals(lastCourse)){getSprite().setImage(getImage("destroyedTank.png"));}
-            if (LastCourse.down.equals(lastCourse)){getSprite().setImage(getImage("destroyedTank.png"));}
-            if (LastCourse.left.equals(lastCourse)){getSprite().setImage(getImage("destroyedTank.png"));}
-            if (LastCourse.right.equals(lastCourse)){getSprite().setImage(getImage("destroyedTank.png"));}
+            if (LastCourse.up.equals(lastCourse)){getSprite().setImage(getImage("/destroyedTankUp.png"));}
+            if (LastCourse.down.equals(lastCourse)){getSprite().setImage(getImage("destroyedTankDown.png"));}
+            if (LastCourse.left.equals(lastCourse)){getSprite().setImage(getImage("destroyedTankLeft.png"));}
+            if (LastCourse.right.equals(lastCourse)){getSprite().setImage(getImage("destroyedTankRight.png"));}
             //getSprite().setImage(getImage("blast.gif"));
             lastCourse = LastCourse.Destroyed;
         }
