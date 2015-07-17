@@ -25,7 +25,7 @@ public class EnemyTank extends AbstractTank{
     public boolean alive = true;
     public boolean display = true;
     private static int count = 0;
-    public int deathAnimationTime = 500;
+    public int deathAnimationTime = 800;
 
     public EnemyTank() {
         this.respownX = GlobalVariables.homeLocation_X;
