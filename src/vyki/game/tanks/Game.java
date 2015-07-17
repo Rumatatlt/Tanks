@@ -136,10 +136,19 @@ public class Game extends Canvas implements Runnable {
         ListIterator enTank = enemyTanks.listIterator();
         while (enTank.hasNext()){
             EnemyTank enemyTank = (EnemyTank) enTank.next();
-            URL url = this.getClass().getClassLoader().getResource("blast.gif");
+            URL url;
+
+            if (LastCourse.up.equals(enemyTank.getLastCourse())){ url = this.getClass().getClassLoader().getResource("blastUp.gif");}
+            else if (LastCourse.down.equals(enemyTank.getLastCourse())){ url = this.getClass().getClassLoader().getResource("blastDown.gif");}
+            else if (LastCourse.right.equals(enemyTank.getLastCourse())){ url = this.getClass().getClassLoader().getResource("blastRight.gif");}
+            else if (LastCourse.left.equals(enemyTank.getLastCourse())){ url = this.getClass().getClassLoader().getResource("blastLeft.gif");}
+            else url = this.getClass().getClassLoader().getResource("blastUp.gif");
+
+
             ImageIcon icon = new ImageIcon(url);
             Image image = icon.getImage();
-            if (enemyTank.getLastCourse()== LastCourse.Destroyed && enemyTank.deathAnimationTime>=0) {
+            if (!enemyTank.alive && enemyTank.deathAnimationTime>=0) {
+
                 g.drawImage(image, enemyTank.getX()-160, enemyTank.getY()-330, null);
                 enemyTank.deathAnimationTime = enemyTank.deathAnimationTime - 11;
                 if (enemyTank.deathAnimationTime<=0){

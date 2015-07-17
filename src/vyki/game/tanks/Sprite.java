@@ -19,7 +19,7 @@ public class Sprite {
         
     }
 
-    Image blastImage = new ImageIcon(this.getClass().getClassLoader().getResource("blast.gif")).getImage();
+    Image blastImage = new ImageIcon(this.getClass().getClassLoader().getResource("blastUp.gif")).getImage();
 
     
     public int getWidth() {
