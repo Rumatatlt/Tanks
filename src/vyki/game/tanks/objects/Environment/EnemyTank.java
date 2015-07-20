@@ -3,7 +3,10 @@ package vyki.game.tanks.objects.Environment;
 import vyki.game.tanks.GlobalVariables;
 import vyki.game.tanks.Sprite;
 import vyki.game.tanks.objects.Enums.LastCourse;
+import vyki.game.tanks.objects.Enums.LifeStatus;
 import vyki.game.tanks.objects.Shots.EnemyShot;
+
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.ListIterator;
 import java.util.Random;
@@ -15,6 +18,7 @@ public class EnemyTank extends AbstractTank{
     private Sprite sprite;
     private int speed = 1;
     private LastCourse lastCourse;
+    private LifeStatus lifeStatus;
     private int numCourse=1;
     private int X = 0;
     private int Y = 0;
@@ -22,10 +26,12 @@ public class EnemyTank extends AbstractTank{
     private int respownY;
     private static int collSize = 1;
     private static int tankLimit = 2;
-    public boolean alive = true;
+
     public boolean display = true;
     private static int count = 0;
     public int deathAnimationTime = 800;
+    public BlastContainer blastContainer = new BlastContainer();
+    public URL url;
 
     public EnemyTank() {
         this.respownX = GlobalVariables.homeLocation_X;
@@ -36,7 +42,6 @@ public class EnemyTank extends AbstractTank{
         getSprite().x=this.getX();
         getSprite().y=this.getY();
         collSize++;
-        //System.out.println("new EnemyTank, total= " + collSize);
     }
 
 
@@ -44,7 +49,9 @@ public class EnemyTank extends AbstractTank{
         Random ran = new Random();
 
         for (EnemyTank tank : enemyTanks){
-            if (!tank.alive){tank.enemyTankDestroyed();} else {
+            if (tank.getLifeStatus().equals(LifeStatus.HITTED) || tank.getLifeStatus().equals(LifeStatus.Destroyed)){
+                tank.enemyTankDestroyed();}
+            else {
                 if (findTargets()){
                     tracking(tank);
                     //tank.shoot();
@@ -85,7 +92,6 @@ public class EnemyTank extends AbstractTank{
                 distanceY = Math.abs(GlobalVariables.player1_Y) - Math.abs(tank.getY());
                 if (distanceX>500 || distanceY>500){
                         iterator.remove();
-                    //tank.display = false;
                 }
             }
         }
@@ -151,10 +157,32 @@ public class EnemyTank extends AbstractTank{
     public void enemyTankDestroyed(){
         this.X -=0;
         getSprite().x=getX();
-            if (LastCourse.up.equals(lastCourse)){getSprite().setImage(getImage("tankDestroyed/destroyedTankUp.png"));}
-            if (LastCourse.down.equals(lastCourse)){getSprite().setImage(getImage("tankDestroyed/destroyedTankDown.png"));}
-            if (LastCourse.left.equals(lastCourse)){getSprite().setImage(getImage("tankDestroyed/destroyedTankLeft.png"));}
-            if (LastCourse.right.equals(lastCourse)){getSprite().setImage(getImage("tankDestroyed/destroyedTankRight.png"));}
+        if (LastCourse.up.equals(lastCourse)){getSprite().setImage(getImage("tankDestroyed/destroyedTankUp.png"));}
+        if (LastCourse.down.equals(lastCourse)){getSprite().setImage(getImage("tankDestroyed/destroyedTankDown.png"));}
+        if (LastCourse.left.equals(lastCourse)){getSprite().setImage(getImage("tankDestroyed/destroyedTankLeft.png"));}
+        if (LastCourse.right.equals(lastCourse)){getSprite().setImage(getImage("tankDestroyed/destroyedTankRight.png"));}
+
+        if (this.deathAnimationTime==800) {
+            Tank Player_1 = GlobalVariables.tanks.get(0);
+            if (LastCourse.up.equals(Player_1.getLastCourse())) {
+                blastContainer.setBlastUrl(this.getClass().getClassLoader().getResource("blastUp.gif"));
+                blastContainer.setCorX(-160);
+                blastContainer.setCorY(-330);
+            } else if (LastCourse.down.equals(Player_1.getLastCourse())) {
+                blastContainer.setBlastUrl(this.getClass().getClassLoader().getResource("blastDown.gif"));
+                blastContainer.setCorX(-150);
+                blastContainer.setCorY(0);
+            } else if (LastCourse.right.equals(Player_1.getLastCourse())) {
+                blastContainer.setBlastUrl(this.getClass().getClassLoader().getResource("blastRight.gif"));
+                blastContainer.setCorX(0);
+                blastContainer.setCorY(-150);
+            } else if (LastCourse.left.equals(Player_1.getLastCourse())) {
+                blastContainer.setBlastUrl(this.getClass().getClassLoader().getResource("blastLeft.gif"));
+                blastContainer.setCorX(-350);
+                blastContainer.setCorY(-150);
+            }
+            this.setLifeStatus(LifeStatus.Destroyed);
+        }
     }
 
     private static boolean createCheck(ArrayList<EnemyTank> enemyTanks, int X, int Y){
@@ -168,13 +196,6 @@ public class EnemyTank extends AbstractTank{
             }
         }
         return val;
-    }
-    public boolean isAlive() {
-        return alive;
-    }
-
-    public void setAlive(boolean alive) {
-        this.alive = alive;
     }
 
     public Sprite getSprite() {

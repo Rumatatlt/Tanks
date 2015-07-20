@@ -2,6 +2,7 @@ package vyki.game.tanks.objects.Shots;
 
 import vyki.game.tanks.Sprite;
 import vyki.game.tanks.objects.Enums.LastCourse;
+import vyki.game.tanks.objects.Enums.LifeStatus;
 import vyki.game.tanks.objects.Environment.AbstractTank;
 
 import javax.imageio.ImageIO;
@@ -29,12 +30,6 @@ public abstract class AbstractShot {
         else if (LastCourse.right == getCourse()){getSprite().x+= getSpeed();}
         else if (LastCourse.down == getCourse()){getSprite().y+= getSpeed();}
         else if (LastCourse.up == getCourse()){getSprite().y-= getSpeed();}
-        /*switch (this.getCourse()){
-            case "left":  getSprite().x-= getSpeed(); break;
-            case "right": getSprite().x+= getSpeed(); break;
-            case "down":  getSprite().y+= getSpeed(); break;
-            case "up":    getSprite().y-= getSpeed(); break;
-        }*/
         return strike;
     }
 
@@ -52,8 +47,8 @@ public abstract class AbstractShot {
             TankY=coord[1];
             result = Math.sqrt(Math.pow((TankX-snX),2) +  Math.pow((TankY-snY),2)) < radius;
             if (result){
-                System.out.println("result");
-                pr.setAlive(false);
+                System.out.println("target hitted");
+                pr.setLifeStatus(LifeStatus.HITTED);
             }
         }
         return result;

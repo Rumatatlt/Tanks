@@ -3,6 +3,8 @@ package vyki.game.tanks.objects.Environment;
 
 import vyki.game.tanks.Sprite;
 import vyki.game.tanks.objects.Enums.LastCourse;
+import vyki.game.tanks.objects.Enums.LifeStatus;
+
 import javax.swing.*;
 import java.awt.*;
 import java.net.URL;
@@ -16,6 +18,7 @@ public abstract class AbstractTank {
     private int Y = 0;
     private int speed = 1;
     private LastCourse lastCourse;
+    private LifeStatus lifeStatus = LifeStatus.ALIVE;
     private boolean alive = true;
 
     public void Test(){
@@ -109,5 +112,13 @@ public abstract class AbstractTank {
 
     public void setSpeed(int speed) {
         this.speed = speed;
+    }
+
+    public LifeStatus getLifeStatus() {
+        return lifeStatus;
+    }
+
+    public void setLifeStatus(LifeStatus lifeStatus) {
+        this.lifeStatus = lifeStatus;
     }
 }

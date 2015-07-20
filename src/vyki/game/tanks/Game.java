@@ -9,8 +9,7 @@ import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
-
-import vyki.game.tanks.objects.Enums.LastCourse;
+import vyki.game.tanks.objects.Enums.LifeStatus;
 import vyki.game.tanks.objects.Environment.EnemyTank;
 import vyki.game.tanks.objects.MapShard;
 import vyki.game.tanks.objects.Shots.EnemyShot;
@@ -136,20 +135,10 @@ public class Game extends Canvas implements Runnable {
         ListIterator enTank = enemyTanks.listIterator();
         while (enTank.hasNext()){
             EnemyTank enemyTank = (EnemyTank) enTank.next();
-            URL url;
-
-            if (LastCourse.up.equals(enemyTank.getLastCourse())){ url = this.getClass().getClassLoader().getResource("blastUp.gif");}
-            else if (LastCourse.down.equals(enemyTank.getLastCourse())){ url = this.getClass().getClassLoader().getResource("blastDown.gif");}
-            else if (LastCourse.right.equals(enemyTank.getLastCourse())){ url = this.getClass().getClassLoader().getResource("blastRight.gif");}
-            else if (LastCourse.left.equals(enemyTank.getLastCourse())){ url = this.getClass().getClassLoader().getResource("blastLeft.gif");}
-            else url = this.getClass().getClassLoader().getResource("blastUp.gif");
-
-
-            ImageIcon icon = new ImageIcon(url);
-            Image image = icon.getImage();
-            if (!enemyTank.alive && enemyTank.deathAnimationTime>=0) {
-
-                g.drawImage(image, enemyTank.getX()-160, enemyTank.getY()-330, null);
+            if (LifeStatus.Destroyed.equals(enemyTank.getLifeStatus()) && enemyTank.deathAnimationTime>0) {
+                ImageIcon icon = new ImageIcon(enemyTank.blastContainer.getBlastUrl());
+                Image image = icon.getImage();
+                g.drawImage(image, enemyTank.getX() + enemyTank.blastContainer.getCorX(), enemyTank.getY() + enemyTank.blastContainer.getCorY(), null);
                 enemyTank.deathAnimationTime = enemyTank.deathAnimationTime - 11;
                 if (enemyTank.deathAnimationTime<=0){
                     icon.getImage().flush();
