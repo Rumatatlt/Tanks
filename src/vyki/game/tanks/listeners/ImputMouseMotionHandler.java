@@ -23,8 +23,8 @@ public class ImputMouseMotionHandler implements MouseMotionListener {
 
     @Override
     public void mouseMoved(MouseEvent e) {
-        GlobalVariables.cursore_X = e.getX();
-        GlobalVariables.cursore_Y = e.getY();
+        GlobalVariables.cursore_X = e.getX()-400;
+        GlobalVariables.cursore_Y = (e.getY()-400)*-1;
         //System.out.println("X= " +e.getY() + " Y= "+e.getY());
     }
 }

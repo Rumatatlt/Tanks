@@ -29,8 +29,6 @@ public class Tank  extends AbstractTank{
 
     public void shoot(ArrayList<PlayerShot> shots){
         shots.add(new PlayerShot(getLastCourse(),GlobalVariables.player1_X,GlobalVariables.player1_Y));
-        System.out.println("player1 coord: " + GlobalVariables.player1_X + " " + GlobalVariables.player1_Y);
-        System.out.println("Map coord: "+GlobalVariables.mapX +" "+GlobalVariables.mapY);
     }
 
     @Override
