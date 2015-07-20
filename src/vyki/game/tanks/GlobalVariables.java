@@ -45,6 +45,8 @@ public class GlobalVariables {
     public static int lifeCycleTacts = 0;
     public static int player1_X = 0;
     public static int player1_Y = 0;
+    public static int cursore_X = 0;
+    public static int cursore_Y = 0;
     public static int respawn_X = 0;
     public static int respawn_Y = 0;
     public static int divX;

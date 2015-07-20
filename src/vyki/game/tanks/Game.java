@@ -1,6 +1,8 @@
 package vyki.game.tanks;
 
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferStrategy;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -8,6 +10,9 @@ import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
+
+import vyki.game.tanks.listeners.ImputMouseHandler;
+import vyki.game.tanks.listeners.ImputMouseMotionHandler;
 import vyki.game.tanks.objects.Enums.LifeStatus;
 import vyki.game.tanks.objects.Environment.EnemyTank;
 import vyki.game.tanks.objects.MapShard;
@@ -64,6 +69,8 @@ public class Game extends Canvas implements Runnable {
     }
 
 	public void init() {
+        addMouseMotionListener(new ImputMouseMotionHandler(this));
+        addMouseListener(new ImputMouseHandler(this));
 		addKeyListener(new KeyInputHandler(this));
         tanks.add(new Tank());
         Player_1 = tanks.get(0);
@@ -101,6 +108,7 @@ public class Game extends Canvas implements Runnable {
         g.setFont(new Font("default", Font.BOLD, 16));
         g.setColor(Color.gray);
         g.drawString("player_X=" + GlobalVariables.player1_X + " player_Y= " + GlobalVariables.player1_Y, 50, 720);
+        g.drawString("cursore_X=" + GlobalVariables.cursore_X + " cursore_Y= " + GlobalVariables.cursore_Y, 50, 740);
         g.drawString("homeLocation_X= "+GlobalVariables.homeLocation_X+" homeLocation_Y= "+ GlobalVariables.homeLocation_Y,50,700);
         g.drawString("Map shards= "+shards.size(),600,700);
         g.drawString("Enemy units= "+enemyTanks.size(),600,720);
