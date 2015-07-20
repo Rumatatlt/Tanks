@@ -84,14 +84,6 @@ public abstract class AbstractShot {
         else if (LastCourse.right == getCourse()){sprite = new Sprite(getImage(path), getX() +28, getY() +11);}
         else if (LastCourse.down == getCourse()){sprite = new Sprite(getImage(path), getX() +11, getY() +28);}
         else if (LastCourse.up == getCourse()){sprite = new Sprite(getImage(path), getX() +11, getY() -11);}
-
-        /*switch (getCourse()){
-            case LastCourse.left: sprite = new Sprite(getImage(path), getX() -11, getY() +11);  break;
-            case "right": sprite = new Sprite(getImage(path), getX() +28, getY() +11); break;
-            case "down": sprite = new Sprite(getImage(path), getX() +11, getY() +28);  break;
-            case "up": sprite = new Sprite(getImage(path), getX() +11, getY() -11);    break;
-        }*/
-
         return sprite;
     }
     public Image getImage(String path) {
