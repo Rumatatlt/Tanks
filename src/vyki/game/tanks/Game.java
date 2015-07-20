@@ -1,8 +1,6 @@
 package vyki.game.tanks;
 
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.awt.image.BufferStrategy;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -13,6 +11,7 @@ import javax.swing.*;
 
 import vyki.game.tanks.listeners.ImputMouseHandler;
 import vyki.game.tanks.listeners.ImputMouseMotionHandler;
+import vyki.game.tanks.listeners.KeyInputHandler;
 import vyki.game.tanks.objects.Enums.LifeStatus;
 import vyki.game.tanks.objects.Environment.EnemyTank;
 import vyki.game.tanks.objects.MapShard;

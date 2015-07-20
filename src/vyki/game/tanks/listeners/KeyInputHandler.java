@@ -2,7 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package vyki.game.tanks;
+package vyki.game.tanks.listeners;
+
+import vyki.game.tanks.Game;
+import vyki.game.tanks.GlobalVariables;
 
 import java.awt.Image;
 import java.awt.event.KeyAdapter;
@@ -14,11 +17,11 @@ import java.util.logging.Logger;
  *
  * @author vyki0513
  */
-class KeyInputHandler extends KeyAdapter {
+public class KeyInputHandler extends KeyAdapter {
 
     private static Game game;
 
-    KeyInputHandler(Game game) {
+    public KeyInputHandler(Game game) {
         this.game = game;
     }
 
