@@ -2,7 +2,6 @@ package vyki.game.tanks;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
-import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
