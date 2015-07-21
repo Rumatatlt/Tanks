@@ -23,24 +23,30 @@ public abstract class AbstractShot {
     private LastCourse course;
     private int X;
     private int Y;
+    private float stepX;
+    private float stepY;
 
-    public boolean Hit(ArrayList<AbstractTank> players){
-        boolean strike = false;
-        if (inHitbox(getSprite().x - 10, getSprite().y - 12, players)) {strike = true;}
-
+    public  AbstractShot(){
         int x1= GlobalVariables.player1_X;
         int y1= GlobalVariables.player1_Y;
         int x2= GlobalVariables.player1_X + GlobalVariables.cursore_X;
         int y2= GlobalVariables.player1_Y + GlobalVariables.cursore_Y;
         float leagth = (float) Math.sqrt(Math.pow((x1 - x2), 2) + Math.pow((y1 - y2), 2));
-        int in = (int) leagth;
-        //System.out.println("length = "+ leagth);
         float Lx = x2 - x1;
         float Ly = y2 - y1;
-        float stepX = (float)  Lx / leagth;
-        float stepY = (float)  Ly / leagth;
+        stepX = (float)  Lx / leagth;
+        stepY = (float)  Ly / leagth;
+    }
+
+    public boolean Hit(ArrayList<AbstractTank> players){
+        boolean strike = false;
+        if (inHitbox(getSprite().x - 10, getSprite().y - 12, players)) {strike = true;}
+
+
         getSprite().x-= -1*Math.round(getSpeed() * stepX);
         getSprite().y+= -1*Math.round(getSpeed() * stepY);
+        setX(getSprite().x);
+        setY(getSprite().y);
       /*  for (int i=0; i<in; i++){
             System.out.println("step "+i+": "+"x: "+ Math.round(i*stepX) + " y: " + Math.round(i*stepY));
         }*/
