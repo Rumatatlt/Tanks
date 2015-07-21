@@ -1,5 +1,6 @@
 package vyki.game.tanks.objects.Shots;
 
+import vyki.game.tanks.GlobalVariables;
 import vyki.game.tanks.Sprite;
 import vyki.game.tanks.objects.Enums.LastCourse;
 import vyki.game.tanks.objects.Enums.LifeStatus;
@@ -26,10 +27,28 @@ public abstract class AbstractShot {
     public boolean Hit(ArrayList<AbstractTank> players){
         boolean strike = false;
         if (inHitbox(getSprite().x - 10, getSprite().y - 12, players)) {strike = true;}
-        if (LastCourse.left == getCourse()) {getSprite().x-= getSpeed();}
+
+        int x1= GlobalVariables.player1_X;
+        int y1= GlobalVariables.player1_Y;
+        int x2= GlobalVariables.player1_X + GlobalVariables.cursore_X;
+        int y2= GlobalVariables.player1_Y + GlobalVariables.cursore_Y;
+        float leagth = (float) Math.sqrt(Math.pow((x1 - x2), 2) + Math.pow((y1 - y2), 2));
+        int in = (int) leagth;
+        System.out.println("length = "+ leagth);
+        float Lx = x2 - x1;
+        float Ly = y2 - y1;
+        float stepX = (float)  Lx / leagth;
+        float stepY = (float)  Ly / leagth;
+        getSprite().x-= -1*Math.round(getSpeed() * stepX);
+        getSprite().y+= -1*Math.round(getSpeed() * stepY);
+      /*  for (int i=0; i<in; i++){
+            System.out.println("step "+i+": "+"x: "+ Math.round(i*stepX) + " y: " + Math.round(i*stepY));
+        }*/
+
+        /*if (LastCourse.left == getCourse()) {getSprite().x-= getSpeed();}
         else if (LastCourse.right == getCourse()){getSprite().x+= getSpeed();}
         else if (LastCourse.down == getCourse()){getSprite().y+= getSpeed();}
-        else if (LastCourse.up == getCourse()){getSprite().y-= getSpeed();}
+        else if (LastCourse.up == getCourse()){getSprite().y-= getSpeed();}*/
         return strike;
     }
 
