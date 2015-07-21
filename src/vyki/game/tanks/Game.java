@@ -2,11 +2,16 @@ package vyki.game.tanks;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import vyki.game.tanks.listeners.ImputMouseHandler;
@@ -97,7 +102,8 @@ public class Game extends Canvas implements Runnable {
         EnemyTank.enemyTankConstructor();
         EnemyTank.enemyTankAI();
 
-         for (MapShard shard : shards){
+
+        for (MapShard shard : shards){
            /* if (shard.getX()==GlobalVariables.homeLocation_X && shard.getY()==GlobalVariables.homeLocation_Y){
                 shard.draw(g);
             }*/
