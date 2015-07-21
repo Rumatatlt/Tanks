@@ -162,6 +162,7 @@ public class EnemyTank extends AbstractTank{
         if (LastCourse.left.equals(lastCourse)){getSprite().setImage(getImage("tankDestroyed/destroyedTankLeft.png"));}
         if (LastCourse.right.equals(lastCourse)){getSprite().setImage(getImage("tankDestroyed/destroyedTankRight.png"));}
 
+        //TODO сделать несколько моделек разрушенных танков, для каждой из сторон куда может попасть снаряд
         if (this.deathAnimationTime==800) {
             Tank Player_1 = GlobalVariables.tanks.get(0);
             if (LastCourse.up.equals(Player_1.getLastCourse())) {
