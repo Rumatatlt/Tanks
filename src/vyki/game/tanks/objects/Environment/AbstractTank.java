@@ -29,7 +29,7 @@ public abstract class AbstractTank {
         setX(getX() - getSpeed());
         getSprite().x= getX();
         if (!"left".equals(getLastCourse())){
-            getSprite().setImage(getImage("tankLeft.png"));
+            getSprite().setImage(getImage("carcass/tankCarcassLeft.png"));
             setLastCourse(LastCourse.left);
         }
     }
@@ -37,7 +37,7 @@ public abstract class AbstractTank {
         setX(getX() + getSpeed());
         getSprite().x= getX();
         if (!"right".equals(getLastCourse())){
-            getSprite().setImage(getImage("tankRight.png"));
+            getSprite().setImage(getImage("carcass/tankCarcassRight.png"));
             setLastCourse(LastCourse.right);
         }
     }
@@ -45,7 +45,7 @@ public abstract class AbstractTank {
         setY(getY() + getSpeed());
         getSprite().y= getY();
         if (!"down".equals(getLastCourse())){
-            getSprite().setImage(getImage("tankDown.png"));
+            getSprite().setImage(getImage("carcass/tankCarcassDown.png"));
             setLastCourse(LastCourse.down);
         }
     }
@@ -54,7 +54,7 @@ public abstract class AbstractTank {
         setY(getY() - getSpeed());
         getSprite().y= getY();
         if (!"up".equals(getLastCourse())){
-            getSprite().setImage(getImage("tankUp.png"));
+            getSprite().setImage(getImage("carcass/tankCarcassUp.png"));
             setLastCourse(LastCourse.up);
         }
     }

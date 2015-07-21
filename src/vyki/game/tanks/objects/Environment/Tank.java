@@ -23,7 +23,7 @@ public class Tank  extends AbstractTank{
     public boolean alive = true;
 
     public Tank() {
-        this.sprite = getSprite("tankUP.png", GlobalVariables.player1_X, GlobalVariables.player1_Y);
+        this.sprite = getSprite("tankCarcass.png", GlobalVariables.player1_X, GlobalVariables.player1_Y);
     }
 
 
