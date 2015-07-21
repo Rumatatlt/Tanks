@@ -98,11 +98,12 @@ public abstract class AbstractShot {
     }
 
     public Sprite getSpriteShot(String path) {
+        int k = 10;
         Sprite sprite = new Sprite(getImage(path), getX(), getY());
-        if (LastCourse.left == getCourse()) {sprite = new Sprite(getImage(path), getX() -11, getY() +11);}
-        else if (LastCourse.right == getCourse()){sprite = new Sprite(getImage(path), getX() +28, getY() +11);}
-        else if (LastCourse.down == getCourse()){sprite = new Sprite(getImage(path), getX() +11, getY() +28);}
-        else if (LastCourse.up == getCourse()){sprite = new Sprite(getImage(path), getX() +11, getY() -11);}
+        if (LastCourse.left == getCourse()) {sprite = new Sprite(getImage(path), getX()+k , getY()+k );}
+        else if (LastCourse.right == getCourse()){sprite = new Sprite(getImage(path), getX()+k , getY()+k );}
+        else if (LastCourse.down == getCourse()){sprite = new Sprite(getImage(path), getX()+k , getY()+k );}
+        else if (LastCourse.up == getCourse()){sprite = new Sprite(getImage(path), getX()+k , getY()+k );}
         return sprite;
     }
     public Image getImage(String path) {
