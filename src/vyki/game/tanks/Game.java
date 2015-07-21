@@ -122,6 +122,7 @@ public class Game extends Canvas implements Runnable {
                 //System.out.println("Попал!");
                 itSH.remove();
             }
+            System.out.println(shot.getX());
             if (Math.abs(GlobalVariables.player1_X - shot.getX())>200 || Math.abs(GlobalVariables.player1_Y - shot.getY())>200){
                 itSH.remove();
             }

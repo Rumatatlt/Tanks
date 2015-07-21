@@ -34,7 +34,7 @@ public abstract class AbstractShot {
         int y2= GlobalVariables.player1_Y + GlobalVariables.cursore_Y;
         float leagth = (float) Math.sqrt(Math.pow((x1 - x2), 2) + Math.pow((y1 - y2), 2));
         int in = (int) leagth;
-        System.out.println("length = "+ leagth);
+        //System.out.println("length = "+ leagth);
         float Lx = x2 - x1;
         float Ly = y2 - y1;
         float stepX = (float)  Lx / leagth;
