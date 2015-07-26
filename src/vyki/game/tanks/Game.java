@@ -121,7 +121,7 @@ public class Game extends Canvas implements Runnable {
         g.translate(-GlobalVariables.player1_X + GlobalVariables.WIDTH / 2, -GlobalVariables.player1_Y + GlobalVariables.HEIGHT / 2);
 
 
-        Path path1 = Paths.get(".\\assets\\tankRight.png");
+        Path path1 = Paths.get(".\\assets\\tankCannon.png");
         Image background1 = Toolkit.getDefaultToolkit().getImage(String.valueOf(path1));
         Graphics2D g2d  = (Graphics2D)g;
         g2d.drawImage(background1, GlobalVariables.player1_X+100, GlobalVariables.player1_Y+100, null);
