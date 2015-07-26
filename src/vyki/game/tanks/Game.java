@@ -121,10 +121,7 @@ public class Game extends Canvas implements Runnable {
         g.translate(-GlobalVariables.player1_X + GlobalVariables.WIDTH / 2, -GlobalVariables.player1_Y + GlobalVariables.HEIGHT / 2);
 
 
-        Path path1 = Paths.get(".\\assets\\tankCannon.png");
-        Image background1 = Toolkit.getDefaultToolkit().getImage(String.valueOf(path1));
-        Graphics2D g2d  = (Graphics2D)g;
-        g2d.drawImage(background1, GlobalVariables.player1_X+100, GlobalVariables.player1_Y+100, null);
+
 
         //playerShots
         ListIterator itSH = shots.listIterator();
@@ -171,6 +168,15 @@ public class Game extends Canvas implements Runnable {
             enemyTank.getSprite().draw(g);
         }*/
         //System.out.println("total shards= "+shards.size());
+        Path path1 = Paths.get(".\\assets\\tankCannon.png");
+        Image background1 = Toolkit.getDefaultToolkit().getImage(String.valueOf(path1));
+        ((Graphics2D) g).rotate(0);
+        Graphics2D g2d  = (Graphics2D)g;
+        //((Graphics2D) g).rotate(50);
+       // g2d.rotate(-50);
+        g2d.drawImage(background1, GlobalVariables.player1_X-10, GlobalVariables.player1_Y-10, null);
+        //g2d.dispose();
+
         g.dispose();
         bs.show();
     }
