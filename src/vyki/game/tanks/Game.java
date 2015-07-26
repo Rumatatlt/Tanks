@@ -1,6 +1,7 @@
 package vyki.game.tanks;
 
 import java.awt.*;
+import java.awt.geom.AffineTransform;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
@@ -118,6 +119,12 @@ public class Game extends Canvas implements Runnable {
         g.drawString("Map shards= "+shards.size(),600,700);
         g.drawString("Enemy units= "+enemyTanks.size(),600,720);
         g.translate(-GlobalVariables.player1_X + GlobalVariables.WIDTH / 2, -GlobalVariables.player1_Y + GlobalVariables.HEIGHT / 2);
+
+
+        Path path1 = Paths.get(".\\assets\\tankRight.png");
+        Image background1 = Toolkit.getDefaultToolkit().getImage(String.valueOf(path1));
+        Graphics2D g2d  = (Graphics2D)g;
+        g2d.drawImage(background1, GlobalVariables.player1_X+100, GlobalVariables.player1_Y+100, null);
 
         //playerShots
         ListIterator itSH = shots.listIterator();
