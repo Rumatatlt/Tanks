@@ -2,11 +2,14 @@ package vyki.game.tanks;
 
 import java.awt.*;
 import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
@@ -170,13 +173,19 @@ public class Game extends Canvas implements Runnable {
         //System.out.println("total shards= "+shards.size());
         Path path1 = Paths.get(".\\assets\\tankCannon.png");
         Image background1 = Toolkit.getDefaultToolkit().getImage(String.valueOf(path1));
-        ((Graphics2D) g).rotate(0);
+       // ((Graphics2D) g).rotate(0);
         Graphics2D g2d  = (Graphics2D)g;
-        //((Graphics2D) g).rotate(50);
-       // g2d.rotate(-50);
-        g2d.drawImage(background1, GlobalVariables.player1_X-10, GlobalVariables.player1_Y-10, null);
-        //g2d.dispose();
-
+        try {
+            URL url = this.getClass().getClassLoader().getResource("tankCannon.png");
+            BufferedImage img = ImageIO.read(url);
+            AffineTransform tx = new AffineTransform();
+            tx.rotate(-46, 30, 30);
+            AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
+            g2d.drawImage(op.filter(img, null), GlobalVariables.player1_X + 10, GlobalVariables.player1_Y + 10, null);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        g2d.dispose();
         g.dispose();
         bs.show();
     }
