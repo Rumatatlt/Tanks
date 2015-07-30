@@ -176,7 +176,8 @@ public class Game extends Canvas implements Runnable {
             URL url = this.getClass().getClassLoader().getResource("tankCannon.png");
             BufferedImage img = ImageIO.read(url);
             AffineTransform tx = new AffineTransform();
-            tx.rotate(-46, 30, 30);
+            double gradus = -45 * 0.0174532925;
+            tx.rotate(gradus, 30, 30);
             AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
             g2d.drawImage(op.filter(img, null), GlobalVariables.player1_X + 10, GlobalVariables.player1_Y + 10, null);
         } catch (IOException e) {
