@@ -171,9 +171,6 @@ public class Game extends Canvas implements Runnable {
             enemyTank.getSprite().draw(g);
         }*/
         //System.out.println("total shards= "+shards.size());
-        Path path1 = Paths.get(".\\assets\\tankCannon.png");
-        Image background1 = Toolkit.getDefaultToolkit().getImage(String.valueOf(path1));
-       // ((Graphics2D) g).rotate(0);
         Graphics2D g2d  = (Graphics2D)g;
         try {
             URL url = this.getClass().getClassLoader().getResource("tankCannon.png");
