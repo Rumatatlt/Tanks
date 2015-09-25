@@ -173,7 +173,7 @@ public class Game extends Canvas implements Runnable {
         //System.out.println("total shards= "+shards.size());
         Graphics2D g2d  = (Graphics2D)g;
         try {
-            URL url = this.getClass().getClassLoader().getResource("tankCannon.png");
+            URL url = this.getClass().getClassLoader().getResource("test1.png");
             BufferedImage img = ImageIO.read(url);
             AffineTransform tx = new AffineTransform();
             double gradus = (getCursoreAngle()+45) * 0.0174532925 *-1;
