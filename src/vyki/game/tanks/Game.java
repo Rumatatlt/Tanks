@@ -176,12 +176,12 @@ public class Game extends Canvas implements Runnable {
             URL url = this.getClass().getClassLoader().getResource("test1.png");
             BufferedImage img = ImageIO.read(url);
             AffineTransform tx = new AffineTransform();
-            double gradus = (getCursoreAngle()+45) * 0.0174532925 *-1;
+            double gradus = (getCursoreAngle()+240) * 0.0174532925 *-1;
             System.out.println("gradus= "+ getCursoreAngle());
-            tx.rotate(gradus, 30, 30);
+            tx.rotate(gradus, 28, 28);
 
             AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
-            g2d.drawImage(op.filter(img, null), GlobalVariables.player1_X + 10, GlobalVariables.player1_Y + 10, null);
+            g2d.drawImage(op.filter(img, null), GlobalVariables.player1_X + -27, GlobalVariables.player1_Y + -28, null);
         } catch (IOException e) {
             e.printStackTrace();
         }
